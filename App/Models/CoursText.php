@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Models;
-require_once __DIR__ . '/../../assets/vendors/autoload.php';
+require_once __DIR__ . '/../../public/assets/vendors/autoload.php';
 
 use App\Models\DatabaseConnection;
 use App\Models\Cours;
 
-class CoursText
+class CoursText extends  Cours
 {
     private $contenu;
 

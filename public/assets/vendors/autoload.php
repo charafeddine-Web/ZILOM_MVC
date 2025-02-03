@@ -1,7 +1,7 @@
 <?php
 spl_autoload_register(function ($className) {
     $prefix = 'App\\Models\\';
-    $baseDir = __DIR__ . '/../../app/Models/';
+    $baseDir = __DIR__ . '/../../../app/Models/';
     // Vérifier que la classe appartient bien au namespace "App\Models"
     $len = strlen($prefix);
     if (strncmp($prefix, $className, $len) !== 0) {

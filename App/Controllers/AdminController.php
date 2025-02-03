@@ -6,7 +6,7 @@
 //}
 namespace App\Controllers;
 
-require_once __DIR__ . '/../../assets/vendors/autoload.php';
+require_once __DIR__ . '/../../public/assets/vendors/autoload.php';
 
 use App\Models\Admin;
 use Exception;

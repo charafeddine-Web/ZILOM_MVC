@@ -1,7 +1,7 @@
 <?php
 
 
-require_once __DIR__ . '/../assets/vendors/autoload.php';
+require_once __DIR__ . '/assets/vendors/autoload.php';
 require_once __DIR__ . '/../App/Controllers/HomeController.php';
 require_once __DIR__ . '/../App/Controllers/AdminController.php';
 require_once __DIR__ . '/../App/Controllers/EtudiantController.php';

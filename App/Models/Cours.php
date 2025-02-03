@@ -1,11 +1,11 @@
 <?php
-
 namespace App\Models;
-require_once __DIR__ . '/../../assets/vendors/autoload.php';
+
+require_once __DIR__ . '/../../public/assets/vendors/autoload.php';
 
 use App\Models\DatabaseConnection;
 use PDO;
-abstract  class Cours
+abstract class  Cours
 {
     protected $idCours;
     protected $titre;
@@ -131,10 +131,10 @@ abstract  class Cours
             $pdo = DatabaseConnection::getInstance();
 
             $offset = ($page - 1) * $limit;
-            $sql = "SELECT c.idCours, c.titre, c.description, c.type, c.categorie_id, c.enseignant_id, 
-                           ct.nom AS category, c.date_creation, 
-                           CONCAT(u.nom, ' ', u.prenom) AS fullname, 
-                           GROUP_CONCAT(t.nom SEPARATOR ', ') AS tags
+            $sql = "SELECT c.idCours, c.titre, c.description, c.type, c.categorie_id, c.enseignant_id,
+                           ct.nom AS category, c.date_creation,
+                           CONCAT(u.nom, ' ', u.prenom) AS fullname,
+                           STRING_AGG(t.nom , ', ') AS tags
                     FROM cours c
                     INNER JOIN users u ON u.idUser = c.enseignant_id
                     INNER JOIN categories ct ON c.categorie_id = ct.idCategory
@@ -206,7 +206,7 @@ abstract  class Cours
             $sql = "SELECT c.idCours, c.titre, c.description, c.type, c.categorie_id, c.enseignant_id, 
                        ct.nom AS category, c.date_creation, 
                        CONCAT(u.nom, ' ', u.prenom) AS fullname, 
-                       GROUP_CONCAT(t.nom SEPARATOR ', ') AS tags
+                       STRING_AGG(t.nom , ', ') AS tags
                 FROM cours c
                 INNER JOIN users u ON u.idUser = c.enseignant_id
                 INNER JOIN categories ct ON c.categorie_id = ct.idCategory
@@ -235,7 +235,7 @@ abstract  class Cours
             $sql = "SELECT c.idCours, c.titre, c.description, c.type, c.categorie_id, c.enseignant_id, 
                        ct.nom AS category, c.date_creation, 
                        CONCAT(u.nom, ' ', u.prenom) AS fullname, 
-                       GROUP_CONCAT(t.nom SEPARATOR ', ') AS tags
+                       STRING_AGG(t.nom , ', ') AS tags
                 FROM cours c
                 INNER JOIN users u ON u.idUser = c.enseignant_id
                 INNER JOIN categories ct ON c.categorie_id = ct.idCategory
@@ -256,7 +256,7 @@ abstract  class Cours
     public static function getTotalCourses()
     {
         try {
-            $pdo = DatabaseConnection::getInstance()->getConnection();
+            $pdo = DatabaseConnection::getInstance();
             $sql = "SELECT COUNT(*) FROM cours";
             $stmt = $pdo->prepare($sql);
             $stmt->execute();

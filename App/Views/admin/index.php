@@ -15,7 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.19/dist/sweetalert2.min.js"></script>
 
     <link rel="stylesheet" href=".././assets/style.css">
-    <script src=".././assets/tailwind.js"></script>
+    <script src="/../../assets/tailwind.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
@@ -398,7 +398,7 @@
         </script>
  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-        <script src=".././assets/main.js"></script>
+        <script src="/../../assets/main.js"></script>
 
     </body>
 

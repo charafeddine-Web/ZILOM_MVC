@@ -7,10 +7,11 @@ session_start();
 //    exit;
 //}
 
-require_once __DIR__ . '/../../assets/vendors/autoload.php';
+require_once __DIR__ . '/../../public/assets/vendors/autoload.php';
 
 use App\Models\Cours;
 use App\Models\Categorie;
+use http\Exception;
 class CoursController
 {
     public function index()
