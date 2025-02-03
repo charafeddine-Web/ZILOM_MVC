@@ -20,13 +20,13 @@ class CoursController
             $cours = Cours::ShowCours();
             $topCourses = array_slice($cours, 0, 8);
             $categories = Categorie::showCategories();
-
-
         } catch (Exception $e) {
             $error = "Error: " . $e->getMessage();
         }
         require_once __DIR__ . '/../Views/index.php';
     }
+
+
 }
 
 

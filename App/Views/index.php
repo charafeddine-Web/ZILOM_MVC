@@ -1,4 +1,6 @@
-
+<?php
+require_once  __DIR__ . '/../../public/index.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +12,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../../public/assets/images/favicons/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="../../public/assets/images/favicons/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="../../public/assets/images/favicons/favicon-16x16.png" />
-    <link rel="manifest" href="../../public/assets/images/favicons/site.webmanifest" />
+    <link rel="manifest" href="/../../public/assets/images/favicons/site.webmanifest" />
     <meta name="description" content="Crsine HTML Template For Car Services" />
 
     <!-- fonts -->
@@ -35,8 +37,8 @@
     <link rel="stylesheet" href="../../public/assets/vendors/twentytwenty/twentytwenty.css" />
 
     <!-- template styles -->
-    <link rel="stylesheet" href="../../public/assets/css/zilom.css" />
-    <link rel="stylesheet" href="../../public/assets/css/zilom-responsive.css" />
+    <link rel="stylesheet" href="/../../public/assets/css/zilom.css" />
+    <link rel="stylesheet" href="/../../public/assets/css/zilom-responsive.css" />
     <style>
         
 .logout {

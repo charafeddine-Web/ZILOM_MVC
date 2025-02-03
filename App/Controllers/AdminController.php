@@ -22,4 +22,21 @@ class AdminController
         }
         require_once __DIR__ . '/../Views/admin/index.php';
     }
+    public function listCategory(){
+
+    }
+    public function listCours(){
+
+    }
+    public function listEnseignants(){
+
+    }
+    public function listEtudiants(){
+
+    }
+    public function listTags(){
+
+    }
+
+
 }
