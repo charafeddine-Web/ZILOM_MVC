@@ -1,16 +1,14 @@
 <?php
-namespace App\Controllers;
 
+namespace App\Controllers;
 class HomeController
 {
 
     public function index()
     {
-        echo "Bienvenue sur la page d'accueil!";
+        require_once __DIR__ . '/../Views/index.php';
+
     }
 
-    public function about()
-    {
-        echo "Page About";
-    }
+
 }

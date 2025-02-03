@@ -235,7 +235,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['addCategory'])) {
                                     foreach ($category as $ct) {
                                         echo "<tr>";
                                         echo '<td class="border p-2">' . htmlspecialchars($ct['idCategory']) . '</td>';
-                                        echo '<td class="border p-2"><img src="' . htmlspecialchars($ct['imageCategy']) . '" alt="Category Image" style="max-width: 100px; height: auto;" /></td>';
+                                        echo '<td class="border p-2"><img src="' . htmlspecialchars($ct['imageCategy']) . '" alt="Categorie Image" style="max-width: 100px; height: auto;" /></td>';
                                         echo '<td class="border p-2">' . htmlspecialchars($ct['nom']) . '</td>';
                                         echo '<td class="border p-2">' . htmlspecialchars($ct['description']) . '</td>';
                                         echo '<td class="border p-2 flex items-center justify-between">';
@@ -252,7 +252,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['addCategory'])) {
                                         echo "</tr>";
                                     }
                                 } else {
-                                    echo "<tr><td colspan='8' class='text-center p-2'>No Category available.</td></tr>";
+                                    echo "<tr><td colspan='8' class='text-center p-2'>No Categorie available.</td></tr>";
                                 }
                             } catch (PDOException $e) {
                                 echo "<tr><td colspan='8' class='text-center p-2 text-red-500'>Error: " . $e->getMessage() . "</td></tr>";
@@ -341,7 +341,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['addCategory'])) {
             .then(response => response.text())
             .then(data => {
                 Swal.fire({
-                    title: 'Category Details',
+                    title: 'Categorie Details',
                     html: data, 
                     icon: 'info',
                     showCloseButton: true,
@@ -349,7 +349,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['addCategory'])) {
                 });
             })
             .catch(error => {
-                console.error('Error fetching Category details:', error);
+                console.error('Error fetching Categorie details:', error);
             });
     }
 //pour edit

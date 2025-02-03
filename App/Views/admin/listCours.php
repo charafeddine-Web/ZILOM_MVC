@@ -261,7 +261,7 @@ $result =  Cours::ViewStatisticcours();
             <div class="add-cours-form border-b-2 pb-4 mb-4">
                 <h3 class="text-lg font-semibold mb-2">Course Details</h3>
 
-                <!-- Category -->
+                <!-- Categorie -->
                 <div class="form-group flex flex-col">
                     <label for="category" class="text-sm text-gray-700 mb-1">Category</label>
                     <div class="flex items-center">
@@ -398,7 +398,7 @@ $result =  Cours::ViewStatisticcours();
                     class="p-2 border border-gray-300 rounded-lg outline-none text-sm">
                     <?php
                     // try {
-                    //     $category = new Category(null, null, null);
+                    //     $category = new Categorie(null, null, null);
                     //     $resultCat = $category->ShowCategory();
 
                     //     if ($resultCat) {
@@ -410,7 +410,7 @@ $result =  Cours::ViewStatisticcours();
                     //         echo '<option value="">No categories found</option>';
                     //     }
                     // } catch (\PDOException $e) {
-                    //     echo "Error showing Category: " . $e->getMessage();
+                    //     echo "Error showing Categorie: " . $e->getMessage();
                     // }
                     ?>
                 </select>

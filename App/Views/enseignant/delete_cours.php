@@ -11,5 +11,5 @@ if (isset($_GET['idCours'])) {
         echo "Error deleting category.";
     }
 } else {
-    echo "Category ID not provided.";
+    echo "Categorie ID not provided.";
 }

@@ -250,7 +250,7 @@ $isEnrolled = $inscription->checkEnrollment($etudient, $courseId); //
                             </div>
                             <div class="flex items-center space-x-3 p-4 bg-gray-100 rounded-lg shadow-md">
                                 <i class="fas fa-folder-open text-indigo-600 text-2xl"></i>
-                                <p class="text-gray-700"><?= htmlspecialchars($categoryName ?? 'Category Name') ?></p>
+                                <p class="text-gray-700"><?= htmlspecialchars($categoryName ?? 'Categorie Name') ?></p>
                             </div>
                         </div>
                     </div>
