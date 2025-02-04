@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 require_once __DIR__ . '/../../public/assets/vendors/autoload.php';
+use App\Models\User;
 
 class AuthController
 {
@@ -9,11 +10,75 @@ class AuthController
 
     public function login()
     {
-        require_once __DIR__ . '/../Views/visiteur/login.php';
+
+        $success_message = "";
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submitlogin'])) {
+            $error_message = [];
+
+            $email = trim($_POST['email']);
+            $password = trim($_POST['password']);
+
+            if (empty($email) || empty($password)) {
+                $error_message[] = "Veuillez remplir tous les champs.";
+            }
+
+            if (!empty($error_message)) {
+                $_SESSION['error_message'] = $error_message;
+                header('Location: ./login.php');
+                exit();
+            }
+
+            $user = User::login($email, $password);
+
+            if (is_array($user)) {
+
+                if ($user['status'] === 'suspended') {
+                    $error_message[] = "Votre compte est suspendu. Veuillez contacter l'administrateur.";
+                    $_SESSION['error_message'] = $error_message;
+                    header('Location: ./login.php');
+                    exit();
+                }
+
+                $_SESSION['user'] = $user;
+                $_SESSION['id_user'] = $user['idUser'];
+                $_SESSION['id_role'] = $user['idRole'];
+                $_SESSION['fullname'] = $user['nom'].' '.$user['prenom'];
+
+                if ($_SESSION['id_role'] == 2) {
+                    header("Location: ../enseignant/indexEns.php");
+                    exit();
+                } elseif($_SESSION['id_role'] == 3) {
+                    header("Location: ../etudient/indexEtu.php");
+                    exit();
+                }else {
+                    header("Location: ../admin/index.php");
+                    exit();
+                }
+            } else {
+                $error_message[] = $user;
+                $_SESSION['error_message'] = $error_message;
+                header('Location: ./login.php');
+                exit();
+            }
+        }
+
+        $error_message = isset($_SESSION['error_message']) ? $_SESSION['error_message'] : [];
+        $success_message = isset($_SESSION['success_message']) ? $_SESSION['success_message'] : [];
+        unset($_SESSION['error_message']);
+        unset($_SESSION['success_message']);
+
+
+        if (isset($_SESSION['id_user'])) {
+            header("Location: ../index.php");
+            exit;
+        }
+
+        require_once __DIR__ . '/../../App/Views/visiteur/login.php';
     }
     public function register()
     {
-        require_once __DIR__ . '/../Views/visiteur/register.php';
+        require_once __DIR__ . '/../../App/Views/visiteur/register.php';
     }
 
 }

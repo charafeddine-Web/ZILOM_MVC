@@ -58,7 +58,7 @@ class VisiteurController
     public function news_details(){
         require_once __DIR__ . '/../../App/Views/visiteur/news-details.php';
     }
-    public function teachers(){
+    public function teachers_1(){
         require_once __DIR__ . '/../../App/Views/visiteur/teachers-1.php';
     }
 
