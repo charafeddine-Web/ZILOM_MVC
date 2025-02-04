@@ -1,17 +1,4 @@
-<?php 
-session_start(); 
-$error_message = isset($_SESSION['error_message']) ? $_SESSION['error_message'] : [];
-$success_message = isset($_SESSION['success_message']) ? $_SESSION['success_message'] : [];
-unset($_SESSION['error_message']);
-unset($_SESSION['success_message']);
 
-
-if (isset($_SESSION['id_user'])) {
-  header("Location: ../index.php");
-  exit;
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -191,10 +178,10 @@ if (isset($_SESSION['id_user'])) {
                                                                         
                                             if(!isset($_SESSION['id_user'])){
                                             ?>
-                                            <ul class="list-unstyled">
-                                                <li><a class="dropdown current" href="./login.php">Login</a></li>
-                                                <li><a href="./register.php">Register</a></li>
-                                            </ul>
+                                                <ul class="list-unstyled">
+                                                    <li><a href="/ZILOM_MVC/public/login">Login</a></li>
+                                                    <li><a href="/ZILOM_MVC/public/register">Register</a></li>
+                                                </ul>
                                             <?php }else { 
 
                                             ?>

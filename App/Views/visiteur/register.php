@@ -186,10 +186,10 @@ unset($_SESSION['success_message']);
                                                                             
                                             if(!isset($_SESSION['id_user'])){
                                             ?>
-                                            <ul class="list-unstyled">
-                                                <li><a href="./login.php">Login</a></li>
-                                                <li><a class="dropdown current" href="./register.php">Register</a></li>
-                                            </ul>
+                                                <ul class="list-unstyled">
+                                                    <li><a href="/ZILOM_MVC/public/login">Login</a></li>
+                                                    <li><a href="/ZILOM_MVC/public/register">Register</a></li>
+                                                </ul>
                                             <?php }else { 
 
                                             ?>

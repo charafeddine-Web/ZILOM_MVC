@@ -13,15 +13,21 @@ require_once  __DIR__ .'/../Core/Router.php';
 
 // Initialisation du router
 $router = new Router();
+//Auth
+$router->add('POST', '/register', 'AuthController', 'register');
+$router->add('GET', '/login', 'AuthController', 'login');
 
 //Visiteur
 $router->add('GET', '/', 'CoursController', 'index');
 $router->add('GET', '/visiteur/about', 'VisiteurController', 'about');
-$router->add('GET', '/visiteur/contact', 'VisiteurController', 'contact');
-$router->add('GET', '/ZILOM_MVC/public/visiteur/cours_details', 'VisiteurController', 'cours_details');
+$router->add('GET', '/visiteur/courses', 'VisiteurController', 'courses');
+$router->add('GET', '/visiteur/news', 'VisiteurController', 'news');
+$router->add('GET', '/visiteur/cours_details', 'VisiteurController', 'cours_details');
 $router->add('GET', '/visiteur/news', 'VisiteurController', 'news');
 $router->add('GET', '/visiteur/news_details', 'VisiteurController', 'news_details');
-$router->add('GET', '/visiteur/teachers', 'VisiteurController', 'teachers');
+$router->add('GET', '/visiteur/teachers-1', 'VisiteurController', 'teachers_1');
+$router->add('GET', '/visiteur/contact', 'VisiteurController', 'contact');
+
 
 //Enseignant
 
