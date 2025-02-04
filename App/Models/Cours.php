@@ -257,16 +257,17 @@ abstract class  Cours
     {
         try {
             $pdo = DatabaseConnection::getInstance();
-            $sql = "SELECT COUNT(*) FROM cours";
+            $sql = "SELECT COUNT(*) AS total_courses FROM cours";  // Alias COUNT(*) as total_courses
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
             $result = $stmt->fetch(\PDO::FETCH_ASSOC);
-            return $result['COUNT(*)'];
+            return $result['total_courses'];  // Access the aliased result
         } catch (\PDOException $e) {
             echo "Error fetching total courses: " . $e->getMessage();
             return 0;
         }
     }
+
 
 
     public static function staticCours($teacherId) {

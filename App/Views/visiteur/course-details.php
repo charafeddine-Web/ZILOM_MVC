@@ -1,27 +1,3 @@
-<?php
-require_once '../autoload.php';
-use Classes\Cours;
-session_start();
-$courseId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-
-if ($courseId <= 0) {
-    echo "Invalid course ID.";
-    exit;
-}
-
-$courseItem = Cours::getCoursById($courseId);
-
-if (!$courseItem) {
-    echo "Course not found.";
-    exit;
-}
-$instructorName = htmlspecialchars($courseItem['enseignant_nom']);
-$categoryName = htmlspecialchars($courseItem['categorie_nom']);
-
-$cours=Cours::ShowCours();
-$courses = array_slice($cours, 0, 4);
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -176,23 +152,20 @@ $courses = array_slice($cours, 0, 4);
 
                                 <div class="left">
                                     <ul class="main-menu__list">
-                                        <li class="dropdown">
-                                            <a href="../index.php">Home</a>
+                                        <li class="dropdown ">
+                                            <a href="/ZILOM_MVC/public/">Home</a>
                                         </li>
-                                        <li><a href="about.php">About</a></li>
+                                        <li ><a href="/ZILOM_MVC/public/visiteur/about">About</a></li>
                                         <li class="dropdown">
-                                            <a href="courses.php">Courses</a>
-                                           
-                                        </li>
-                                        <li class="dropdown">
-                                            <a href="teachers-1.php"> Teachers</a>
-                                           
+                                            <a href="/ZILOM_MVC/public/visiteur/courses">Courses</a>
                                         </li>
                                         <li class="dropdown">
-                                            <a href="news.php">News</a>
-                                            
+                                            <a href="/ZILOM_MVC/public/visiteur/teachers-1"> Teachers</a>
                                         </li>
-                                        <li><a href="contact.php">Contact</a></li>
+                                        <li class="dropdown">
+                                            <a href="/ZILOM_MVC/public/visiteur/news">News</a>
+                                        </li>
+                                        <li><a href="/ZILOM_MVC/public/visiteur/contact">Contact</a></li>
                                     </ul>
                                 </div>
 

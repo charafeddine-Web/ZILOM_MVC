@@ -1,7 +1,4 @@
-<?php
-session_start();
 
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -155,23 +152,20 @@ session_start();
 
                                 <div class="left">
                                     <ul class="main-menu__list">
-                                        <li class="dropdown">
-                                            <a href="../index.php">Home</a>
+                                        <li class="dropdown ">
+                                            <a href="/ZILOM_MVC/public/">Home</a>
                                         </li>
-                                        <li><a href="about.php">About</a></li>
-                                        <li class="dropdown">
-                                            <a href="courses.php">Courses</a>
-                                           
+                                        <li ><a href="/ZILOM_MVC/public/visiteur/about">About</a></li>
+                                        <li class="dropdown ">
+                                            <a href="/ZILOM_MVC/public/visiteur/courses">Courses</a>
                                         </li>
-                                        <li class="dropdown">
-                                            <a href="teachers-1.php"> Teachers</a>
-                                           
+                                        <li class="dropdown current">
+                                            <a href="/ZILOM_MVC/public/visiteur/teachers-1"> Teachers</a>
                                         </li>
-                                        <li class="dropdown">
-                                            <a href="news.php">News</a>
-                                            
+                                        <li class="dropdown ">
+                                            <a href="/ZILOM_MVC/public/visiteur/news">News</a>
                                         </li>
-                                        <li><a href="contact.php">Contact</a></li>
+                                        <li ><a href="/ZILOM_MVC/public/visiteur/contact">Contact</a></li>
                                     </ul>
                                 </div>
 
