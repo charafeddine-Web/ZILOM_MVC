@@ -1,5 +1,6 @@
 RewriteEngine On
 RewriteBase /ZILOM_MVC/public/
+RewriteCond %{REQUEST_URI} !^/ZILOM_MVC/public/assets/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php [QSA,L]

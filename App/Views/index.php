@@ -1,6 +1,4 @@
-<?php
-require_once  __DIR__ . '/../../public/index.php';
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,38 +7,39 @@ require_once  __DIR__ . '/../../public/index.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home  || Udemey </title>
     <!-- favicons Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../../public/assets/images/favicons/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="../../public/assets/images/favicons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="../../public/assets/images/favicons/favicon-16x16.png" />
-    <link rel="manifest" href="/../../public/assets/images/favicons/site.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="assets/images/favicons/site.webmanifest" />
     <meta name="description" content="Crsine HTML Template For Car Services" />
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../../public/assets/vendors/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../../public/assets/vendors/animate/animate.min.css" />
-    <link rel="stylesheet" href="../../public/assets/vendors/animate/custom-animate.css" />
-    <link rel="stylesheet" href="../../public/assets/vendors/fontawesome/css/all.min.css" />
-    <link rel="stylesheet" href="../../public/assets/vendors/jarallax/jarallax.css" />
-    <link rel="stylesheet" href="../../public/assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
-    <link rel="stylesheet" href="../../public/assets/vendors/nouislider/nouislider.min.css" />
-    <link rel="stylesheet" href="../../public/assets/vendors/nouislider/nouislider.pips.css" />
-    <link rel="stylesheet" href="../../public/assets/vendors/odometer/odometer.min.css" />
-    <link rel="stylesheet" href="../../public/assets/vendors/swiper/swiper.min.css" />
-    <link rel="stylesheet" href="../../public/assets/vendors/icomoon-icons/style.css">
-    <link rel="stylesheet" href="../../public/assets/vendors/tiny-slider/tiny-slider.min.css" />
-    <link rel="stylesheet" href="../../public/assets/vendors/reey-font/stylesheet.css" />
-    <link rel="stylesheet" href="../../public/assets/vendors/owl-carousel/owl.carousel.min.css" />
-    <link rel="stylesheet" href="../../public/assets/vendors/owl-carousel/owl.theme.default.min.css" />
-    <link rel="stylesheet" href="../../public/assets/vendors/twentytwenty/twentytwenty.css" />
+    <link rel="stylesheet" href="assets/vendors/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/vendors/animate/animate.min.css" />
+    <link rel="stylesheet" href="assets/vendors/animate/custom-animate.css" />
+    <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="assets/vendors/jarallax/jarallax.css" />
+    <link rel="stylesheet" href="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
+    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.min.css" />
+    <link rel="stylesheet" href="assets/vendors/nouislider/nouislider.pips.css" />
+    <link rel="stylesheet" href="assets/vendors/odometer/odometer.min.css" />
+    <link rel="stylesheet" href="assets/vendors/swiper/swiper.min.css" />
+    <link rel="stylesheet" href="assets/vendors/icomoon-icons/style.css">
+    <link rel="stylesheet" href="assets/vendors/tiny-slider/tiny-slider.min.css" />
+    <link rel="stylesheet" href="assets/vendors/reey-font/stylesheet.css" />
+    <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.carousel.min.css" />
+    <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="assets/vendors/twentytwenty/twentytwenty.css" />
 
     <!-- template styles -->
-    <link rel="stylesheet" href="/../../public/assets/css/zilom.css" />
-    <link rel="stylesheet" href="/../../public/assets/css/zilom-responsive.css" />
+    <link rel="stylesheet" href="assets/css/zilom.css" />
+    <link rel="stylesheet" href="assets/css/zilom-responsive.css" />
+
     <style>
-        
+
 .logout {
     position: relative;
     display: inline-block;
@@ -93,7 +92,7 @@ require_once  __DIR__ . '/../../public/index.php';
 <body>
 
     <div class="preloader">
-        <img class="preloader__image" width="60" src="/../../assets/images/loader.png" alt="" />
+        <img class="preloader__image" width="60" src="assets/images/loader.png" alt="" />
     </div>
 
     <!-- /.preloader -->
@@ -105,7 +104,7 @@ require_once  __DIR__ . '/../../public/index.php';
                     <div class="main-header--one__top-inner clearfix">
                         <div class="main-header--one__top-left">
                             <div class="main-header--one__top-logo">
-                                <a href="index.php"><img src="/../../assets/images/resources/logo-1.png" alt="" /></a>
+                                <a href="index.php"><img src="assets/images/resources/logo-1.png" alt="" /></a>
                             </div>
                         </div>
 
@@ -155,37 +154,37 @@ require_once  __DIR__ . '/../../public/index.php';
                                 <div class="left">
                                     <ul class="main-menu__list">
                                         <li class="dropdown current">
-                                            <a href="index.php">Home</a>
+                                            <a href="/ZILOM_MVC/public/">Home</a>
                                         </li>
-                                        <li><a href="./visiteur/about.php">About</a></li>
+                                        <li><a href="/ZILOM_MVC/public/visiteur/about">About</a></li>
                                         <li class="dropdown">
-                                            <a href="./visiteur/courses.php">Courses</a>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a href="./visiteur/teachers-1.php"> Teachers</a>
+                                            <a href="/ZILOM_MVC/public/visiteur/courses">Courses</a>
                                         </li>
                                         <li class="dropdown">
-                                            <a href="./visiteur/news.php">News</a>
+                                            <a href="/ZILOM_MVC/public/visiteur/teachers-1"> Teachers</a>
                                         </li>
-                                        <li><a href="./visiteur/contact.php">Contact</a></li>
+                                        <li class="dropdown">
+                                            <a href="/ZILOM_MVC/public/visiteur/news">News</a>
+                                        </li>
+                                        <li><a href="/ZILOM_MVC/public/visiteur/contact">Contact</a></li>
                                     </ul>
                                 </div>
 
                                 <div class="right">
                                     <div class="main-menu__right">
                                         <div class="main-menu__right-login-register">
-                                        <?php 
+                                        <?php
                                             if(!isset($_SESSION['id_user'])){
                                             ?>
                                             <ul class="list-unstyled">
-                                                <li><a href="./visiteur/login.php">Login</a></li>
-                                                <li><a href="./visiteur/register.php">Register</a></li>
+                                                <li><a href="/ZILOM_MVC/public/login">Login</a></li>
+                                                <li><a href="/ZILOM_MVC/public/register">Register</a></li>
                                             </ul>
-                                            <?php }else { 
+                                            <?php }else {
 
                                             ?>
                                                 <div class="b-flex justify-content-end flex ">
-                                               
+
                                                 <div>
                                                     <form action="./logout.php" method="POST">
                                                     <span><?php if(isset ($_SESSION['user']))
@@ -193,11 +192,11 @@ require_once  __DIR__ . '/../../public/index.php';
                                                         <button type="submit" name="submit" class="logout ">Logout</button>
                                                     </form>
                                                 </div>
-                                                    
+
                                             </div>
                                             <?php }
                                             ?>
-                                            
+
                                         </div>
                                         <div class="main-menu__right-cart-search">
                                             <div class="main-menu__right-cart-box">
@@ -244,10 +243,10 @@ require_once  __DIR__ . '/../../public/index.php';
                 <div class="swiper-wrapper">
                     <!--Start Single Swiper Slide-->
                     <div class="swiper-slide">
-                        <div class="shape1"><img src="/../../assets/images/shapes/slider-v1-shape1.png" alt="" /></div>
-                        <div class="shape2"><img src="/../../assets/images/shapes/slider-v1-shape2.png" alt="" /></div>
+                        <div class="shape1"><img src="assets/images/shapes/slider-v1-shape1.png" alt="" /></div>
+                        <div class="shape2"><img src="assets/images/shapes/slider-v1-shape2.png" alt="" /></div>
                         <div class="image-layer"
-                            style="background-image: url(../../public/assets/images/backgrounds/main-slider-v1-1.jpg);"></div>
+                            style="background-image: url(assets/images/backgrounds/main-slider-v1-1.jpg);"></div>
                         <!-- /.image-layer -->
                         <div class="container">
                             <div class="main-slider__content">
@@ -275,7 +274,7 @@ require_once  __DIR__ . '/../../public/index.php';
                                     <a href="#" class="thm-btn">Discover more</a>
                                 </div>
                                 <div class="main-slider-one__img">
-                                    <img src="/../../assets/images/backgrounds/main-slider-v2-1.jpg" alt="" />
+                                    <img src="assets/images/backgrounds/main-slider-v2-1.jpg" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -284,10 +283,10 @@ require_once  __DIR__ . '/../../public/index.php';
 
                     <!--Start Single Swiper Slide-->
                     <div class="swiper-slide">
-                        <div class="shape1"><img src="/../../assets/images/shapes/slider-v1-shape1.png" alt="" /></div>
-                        <div class="shape2"><img src="/../../assets/images/shapes/slider-v1-shape2.png" alt="" /></div>
+                        <div class="shape1"><img src="assets/images/shapes/slider-v1-shape1.png" alt="" /></div>
+                        <div class="shape2"><img src="assets/images/shapes/slider-v1-shape2.png" alt="" /></div>
                         <div class="image-layer"
-                            style="background-image: url(../../public/assets/images/backgrounds/main-slider-v1-1.jpg);"></div>
+                            style="background-image: url(assets/images/backgrounds/main-slider-v1-1.jpg);"></div>
                         <!-- /.image-layer -->
                         <div class="container">
                             <div class="main-slider__content">
@@ -315,7 +314,7 @@ require_once  __DIR__ . '/../../public/index.php';
                                     <a href="#" class="thm-btn">Discover more</a>
                                 </div>
                                 <div class="main-slider-one__img">
-                                    <img src="/../../assets/images/backgrounds/main-slider-v1-img.jpg" alt="" />
+                                    <img src="assets/images/backgrounds/main-slider-v1-img.jpg" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -324,10 +323,10 @@ require_once  __DIR__ . '/../../public/index.php';
 
                     <!--Start Single Swiper Slide-->
                     <div class="swiper-slide">
-                        <div class="shape1"><img src="/../../assets/images/shapes/slider-v1-shape1.png" alt="" /></div>
-                        <div class="shape2"><img src="/../../assets/images/shapes/slider-v1-shape2.png" alt="" /></div>
+                        <div class="shape1"><img src="assets/images/shapes/slider-v1-shape1.png" alt="" /></div>
+                        <div class="shape2"><img src="assets/images/shapes/slider-v1-shape2.png" alt="" /></div>
                         <div class="image-layer"
-                            style="background-image: url(../../public/assets/images/backgrounds/main-slider-v1-1.jpg);"></div>
+                            style="background-image: url(assets/images/backgrounds/main-slider-v1-1.jpg);"></div>
                         <!-- /.image-layer -->
                         <div class="container">
                             <div class="main-slider__content">
@@ -355,7 +354,7 @@ require_once  __DIR__ . '/../../public/index.php';
                                     <a href="#" class="thm-btn">Discover more</a>
                                 </div>
                                 <div class="main-slider-one__img">
-                                    <img src="/../../assets/images/backgrounds/main-slider-v1-img.png" alt="" />
+                                    <img src="assets/images/backgrounds/main-slider-v1-img.png" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -446,12 +445,12 @@ require_once  __DIR__ . '/../../public/index.php';
                             <ul class="about-one__left-img-box list-unstyled clearfix">
                                 <li class="about-one__left-single">
                                     <div class="about-one__left-img1">
-                                        <img src="/../../assets/images/about/about-v1-img2.jpeg" alt="" />
+                                        <img src="assets/images/about/about-v1-img2.jpeg" alt="" />
                                     </div>
                                 </li>
                                 <li class="about-one__left-single">
                                     <div class="about-one__left-img2">
-                                        <img src="/../../assets/images/about/about-v2-img2.jpg" alt="" />
+                                        <img src="assets/images/about/about-v2-img2.jpg" alt="" />
                                     </div>
                                 </li>
                             </ul>
@@ -532,8 +531,8 @@ require_once  __DIR__ . '/../../public/index.php';
     <?php
     if ($topCourses && count($topCourses) >0 ) {
         foreach ($topCourses as $course) {
-            $imageSrc = ($course['type'] === 'text') 
-                ? 'assets/images/backgrounds/text.webp' 
+            $imageSrc = ($course['type'] === 'text')
+                ? 'assets/images/backgrounds/text.webp'
                 : 'assets/images/backgrounds/video.webp';
             ?>
             <div class="col-xl-3 col-lg-6 col-md-6 filter-item <?= htmlspecialchars($course['type']) ?>">
@@ -546,11 +545,11 @@ require_once  __DIR__ . '/../../public/index.php';
                     </div>
                     <div class="courses-one__single-content">
                         <div class="courses-one__single-content-overlay-img">
-                            <img src="../assets/images/resources/courses-v1-overlay-img-placeholder.png" alt=""/>
+                            <img src="assets/images/resources/courses-v1-overlay-img-placeholder.png" alt=""/>
                         </div>
                         <h6 class="courses-one__single-content-name"><?= htmlspecialchars($course['fullname']) ?></h6>
                         <h4 class="courses-one__single-content-title">
-                        <a href="course-details.php?id=<?= htmlspecialchars($course['idCours']) ?>">
+                        <a href="./visiteur/course-details.php?id=<?= htmlspecialchars($course['idCours']) ?>">
                                 <?= htmlspecialchars($course['titre']) ?>
                             </a>
                         </h4>
@@ -591,7 +590,7 @@ require_once  __DIR__ . '/../../public/index.php';
         </section>
         <!--Courses One End-->
         <!--Categories One Start-->
-        
+
         <!--Testimonials One Start-->
         <section class="testimonials-one clearfix">
             <div class="auto-container">
@@ -603,7 +602,7 @@ require_once  __DIR__ . '/../../public/index.php';
                     <div class="col-xl-12">
                         <div class="testimonials-one__wrapper">
                             <div class="testimonials-one__pattern"><img
-                                    src="/../../assets/images/pattern/testimonials-one-left-pattern.png" alt="" /></div>
+                                    src="assets/images/pattern/testimonials-one-left-pattern.png" alt="" /></div>
                             <div class="shape1"><img src="/../../assets/images/shapes/thm-shape3.png" alt="" /></div>
                             <div class="row">
                                 <div class="col-xl-12">
@@ -618,7 +617,7 @@ require_once  __DIR__ . '/../../public/index.php';
                                                     tempor incididunt ut labore et dolore magna aliqua.</p>
                                                 <div class="testimonials-one__single-client-info">
                                                     <div class="testimonials-one__single-client-info-img">
-                                                        <img src="/../../assets/images/testimonial/testimonials-v1-client-info-img1.png"
+                                                        <img src="assets/images/testimonial/testimonials-v1-client-info-img1.png"
                                                             alt="" />
                                                     </div>
                                                     <div class="testimonials-one__single-client-info-text">
@@ -640,7 +639,7 @@ require_once  __DIR__ . '/../../public/index.php';
                                                     tempor incididunt ut labore et dolore magna aliqua.</p>
                                                 <div class="testimonials-one__single-client-info">
                                                     <div class="testimonials-one__single-client-info-img">
-                                                        <img src="/../../assets/images/testimonial/testimonials-v1-client-info-img2.png"
+                                                        <img src="assets/images/testimonial/testimonials-v1-client-info-img2.png"
                                                             alt="" />
                                                     </div>
                                                     <div class="testimonials-one__single-client-info-text">
@@ -662,7 +661,7 @@ require_once  __DIR__ . '/../../public/index.php';
                                                     tempor incididunt ut labore et dolore magna aliqua.</p>
                                                 <div class="testimonials-one__single-client-info">
                                                     <div class="testimonials-one__single-client-info-img">
-                                                        <img src="/../../assets/images/testimonial/testimonials-v1-client-info-img3.png"
+                                                        <img src="assets/images/testimonial/testimonials-v1-client-info-img3.png"
                                                             alt="" />
                                                     </div>
                                                     <div class="testimonials-one__single-client-info-text">
@@ -683,7 +682,7 @@ require_once  __DIR__ . '/../../public/index.php';
                                                     tempor incididunt ut labore et dolore magna aliqua.</p>
                                                 <div class="testimonials-one__single-client-info">
                                                     <div class="testimonials-one__single-client-info-img">
-                                                        <img src="/../../assets/images/testimonial/testimonials-v1-client-info-img1.png"
+                                                        <img src="assets/images/testimonial/testimonials-v1-client-info-img1.png"
                                                             alt="" />
                                                     </div>
                                                     <div class="testimonials-one__single-client-info-text">
@@ -704,7 +703,7 @@ require_once  __DIR__ . '/../../public/index.php';
                                                     tempor incididunt ut labore et dolore magna aliqua.</p>
                                                 <div class="testimonials-one__single-client-info">
                                                     <div class="testimonials-one__single-client-info-img">
-                                                        <img src="/../../assets/images/testimonial/testimonials-v1-client-info-img2.png"
+                                                        <img src="assets/images/testimonial/testimonials-v1-client-info-img2.png"
                                                             alt="" />
                                                     </div>
                                                     <div class="testimonials-one__single-client-info-text">
@@ -725,7 +724,7 @@ require_once  __DIR__ . '/../../public/index.php';
                                                     tempor incididunt ut labore et dolore magna aliqua.</p>
                                                 <div class="testimonials-one__single-client-info">
                                                     <div class="testimonials-one__single-client-info-img">
-                                                        <img src="/../../assets/images/testimonial/testimonials-v1-client-info-img3.png"
+                                                        <img src="assets/images/testimonial/testimonials-v1-client-info-img3.png"
                                                             alt="" />
                                                     </div>
                                                     <div class="testimonials-one__single-client-info-text">
@@ -746,7 +745,7 @@ require_once  __DIR__ . '/../../public/index.php';
                                                     tempor incididunt ut labore et dolore magna aliqua.</p>
                                                 <div class="testimonials-one__single-client-info">
                                                     <div class="testimonials-one__single-client-info-img">
-                                                        <img src="/../../assets/images/testimonial/testimonials-v1-client-info-img1.png"
+                                                        <img src="assets/images/testimonial/testimonials-v1-client-info-img1.png"
                                                             alt="" />
                                                     </div>
                                                     <div class="testimonials-one__single-client-info-text">
@@ -802,34 +801,34 @@ require_once  __DIR__ . '/../../public/index.php';
             }}'>
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="/../../assets/images/resources/logo1.png" alt="">
+                            <img src="assets/images/resources/logo1.png" alt="">
                         </div><!-- /.swiper-slide -->
                         <div class="swiper-slide">
-                            <img src="/../../assets/images/resources/logo2.jpg" alt="">
+                            <img src="assets/images/resources/logo2.jpg" alt="">
                         </div><!-- /.swiper-slide -->
                         <div class="swiper-slide">
-                            <img src="/../../assets/images/resources/logo3.png" alt="">
+                            <img src="assets/images/resources/logo3.png" alt="">
                         </div><!-- /.swiper-slide -->
                         <div class="swiper-slide">
-                            <img src="/../../assets/images/resources/logo4.svg" alt="">
+                            <img src="assets/images/resources/logo4.svg" alt="">
                         </div><!-- /.swiper-slide -->
                         <div class="swiper-slide">
-                            <img src="/../../assets/images/resources/logo5.jpg" alt="">
+                            <img src="assets/images/resources/logo5.jpg" alt="">
                         </div><!-- /.swiper-slide -->
                         <div class="swiper-slide">
-                            <img src="/../../assets/images/resources/logo6.jpg" alt="">
+                            <img src="assets/images/resources/logo6.jpg" alt="">
                         </div><!-- /.swiper-slide -->
                         <div class="swiper-slide">
-                            <img src="/../../assets/images/resources/logo7.png" alt="">
+                            <img src="assets/images/resources/logo7.png" alt="">
                         </div><!-- /.swiper-slide -->
                         <div class="swiper-slide">
-                            <img src="/../../assets/images/resources/logo1.png" alt="">
+                            <img src="assets/images/resources/logo1.png" alt="">
                         </div><!-- /.swiper-slide -->
                         <div class="swiper-slide">
-                            <img src="/../../assets/images/resources/logo1.png" alt="">
+                            <img src="assets/images/resources/logo1.png" alt="">
                         </div><!-- /.swiper-slide -->
                         <div class="swiper-slide">
-                            <img src="/../../assets/images/resources/logo1.png" alt="">
+                            <img src="assets/images/resources/logo1.png" alt="">
                         </div><!-- /.swiper-slide -->
                     </div>
                 </div>
@@ -899,7 +898,7 @@ require_once  __DIR__ . '/../../public/index.php';
                         <div class="why-choose-one__right wow slideInRight animated clearfix" data-wow-delay="0ms"
                             data-wow-duration="1500ms">
                             <div class="why-choose-one__right-img clearfix">
-                                <img src="/../../assets/images/resources/assets/images/resources/why-choose-v1-img.jpg" alt="" />
+                                <img src="assets/images/resources/assets/images/resources/why-choose-v1-img.jpg" alt="" />
                                 <div class="why-choose-one__right-img-overlay">
                                     <p>We’re the best institution</p>
                                 </div>
@@ -943,7 +942,7 @@ require_once  __DIR__ . '/../../public/index.php';
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-xl-4 col-lg-4 wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1500ms">
                         <div class="blog-one__single">
                             <div class="blog-one__single-img">
@@ -964,7 +963,7 @@ require_once  __DIR__ . '/../../public/index.php';
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="col-xl-4 col-lg-4 wow fadeInLeft" data-wow-delay="600ms" data-wow-duration="1500ms">
                         <div class="blog-one__single">
                             <div class="blog-one__single-img">
@@ -1008,9 +1007,9 @@ require_once  __DIR__ . '/../../public/index.php';
                     <!--Start Newsletter One Right-->
                     <div class="col-xl-6 col-lg-6">
                         <div class="newsletter-one__right">
-                            <div class="shape1 zoom-fade"><img src="/../../assets/images/shapes/thm-shape2.png" alt="" /></div>
+                            <div class="shape1 zoom-fade"><img src="assets/images/shapes/thm-shape2.png" alt="" /></div>
                             <div class="shape2 wow slideInRight" data-wow-delay="100ms" data-wow-duration="2500ms"><img
-                                    src="/../../assets/images/shapes/thm-shape3.png" alt="" /></div>
+                                    src="assets/images/shapes/thm-shape3.png" alt="" /></div>
                             <div class="newsletter-form wow slideInDown" data-wow-delay="100ms"
                                 data-wow-duration="1500ms">
                                 <form action="#">
@@ -1036,7 +1035,7 @@ require_once  __DIR__ . '/../../public/index.php';
 
         <!--Start Footer One-->
         <footer class="footer-one">
-            <div class="footer-one__bg" style="background-image: url(../../public/assets/images/backgrounds/footer.jpg);">
+            <div class="footer-one__bg" style="background-image: url(assets/images/backgrounds/footer.jpg);">
             </div><!-- /.footer-one__bg -->
             <div class="footer-one__top">
                 <div class="container">
@@ -1045,7 +1044,7 @@ require_once  __DIR__ . '/../../public/index.php';
                         <div class="col-xl-2 col-lg-4 col-md-4 wow animated fadeInUp" data-wow-delay="0.1s">
                             <div class="footer-widget__column footer-widget__about">
                                 <div class="footer-widget__about-logo">
-                                    <a href="index.php"><img src="/../../assets/images/resources/footer-logo.png" alt=""></a>
+                                    <a href="index.php"><img src="assets/images/resources/footer-logo.png" alt=""></a>
                                 </div>
                             </div>
                         </div>
@@ -1146,7 +1145,7 @@ require_once  __DIR__ . '/../../public/index.php';
             <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
 
             <div class="logo-box">
-                <a href="index.php" aria-label="logo image"><img src="/../../assets/images/resources/mobilemenu_logo.png"
+                <a href="index.php" aria-label="logo image"><img src="assets/images/resources/mobilemenu_logo.png"
                         width="155" alt="" /></a>
             </div>
             <!-- /.logo-box -->
@@ -1199,32 +1198,32 @@ require_once  __DIR__ . '/../../public/index.php';
     <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
 
 
-    <script src="/../../assets/vendors/jquery/jquery-3.5.1.min.js"></script>
-    <script src="/../../assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/../../assets/vendors/jarallax/jarallax.min.js"></script>
-    <script src="/../../assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
-    <script src="/../../assets/vendors/jquery-appear/jquery.appear.min.js"></script>
-    <script src="/../../assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
-    <script src="/../../assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="/../../assets/vendors/jquery-validate/jquery.validate.min.js"></script>
-    <script src="/../../assets/vendors/nouislider/nouislider.min.js"></script>
-    <script src="/../../assets/vendors/odometer/odometer.min.js"></script>
-    <script src="/../../assets/vendors/swiper/swiper.min.js"></script>
-    <script src="/../../assets/vendors/tiny-slider/tiny-slider.min.js"></script>
-    <script src="/../../assets/vendors/wnumb/wNumb.min.js"></script>
-    <script src="/../../assets/vendors/wow/wow.js"></script>
-    <script src="/../../assets/vendors/isotope/isotope.js"></script>
-    <script src="/../../assets/vendors/countdown/countdown.min.js"></script>
-    <script src="/../../assets/vendors/owl-carousel/owl.carousel.min.js"></script>
-    <script src="/../../assets/vendors/twentytwenty/twentytwenty.js"></script>
-    <script src="/../../assets/vendors/twentytwenty/jquery.event.move.js"></script>
-    <script src="/../../assets/vendors/parallax/parallax.min.js"></script>
+    <script src="assets/vendors/jquery/jquery-3.5.1.min.js"></script>
+    <script src="assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/jarallax/jarallax.min.js"></script>
+    <script src="assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/vendors/jquery-appear/jquery.appear.min.js"></script>
+    <script src="assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
+    <script src="assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="assets/vendors/jquery-validate/jquery.validate.min.js"></script>
+    <script src="assets/vendors/nouislider/nouislider.min.js"></script>
+    <script src="assets/vendors/odometer/odometer.min.js"></script>
+    <script src="assets/vendors/swiper/swiper.min.js"></script>
+    <script src="assets/vendors/tiny-slider/tiny-slider.min.js"></script>
+    <script src="assets/vendors/wnumb/wNumb.min.js"></script>
+    <script src="assets/vendors/wow/wow.js"></script>
+    <script src="assets/vendors/isotope/isotope.js"></script>
+    <script src="assets/vendors/countdown/countdown.min.js"></script>
+    <script src="assets/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendors/twentytwenty/twentytwenty.js"></script>
+    <script src="assets/vendors/twentytwenty/jquery.event.move.js"></script>
+    <script src="assets/vendors/parallax/parallax.min.js"></script>
 
 
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyATY4Rxc8jNvDpsK8ZetC7JyN4PFVYGCGM"></script>
 
     <!-- template js -->
-    <script src="/../../assets/js/zilom.js"></script>
+    <script src="assets/js/zilom.js"></script>
 
 
 </body>

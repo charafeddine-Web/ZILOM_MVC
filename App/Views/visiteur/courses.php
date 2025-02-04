@@ -1,24 +1,3 @@
-<?php
-require_once '../autoload.php';
-use Classes\Categorie;
-use Classes\Cours;
-session_start();
-
-$cours=Cours::ShowCours();
-
-$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$limit = 8; 
-$courses = Cours::ShowCours($currentPage, $limit);
-$totalCourses = Cours::getTotalCourses();
-$totalPages = ceil($totalCourses / $limit); 
-
-
-// Fetch categories
-$categories = Categorie::showCategories();
-
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -315,23 +294,20 @@ $categories = Categorie::showCategories();
 
                                 <div class="left">
                                     <ul class="main-menu__list">
-                                        <li class="dropdown">
-                                            <a href="../index.php">Home</a>
+                                        <li class="dropdown ">
+                                            <a href="/ZILOM_MVC/public/">Home</a>
                                         </li>
-                                        <li><a href="about.php">About</a></li>
-                                        <li class="dropdown">
-                                            <a href="courses.php">Courses</a>
-                                           
-                                        </li>
-                                        <li class="dropdown">
-                                            <a href="teachers-1.php"> Teachers</a>
-                                           
+                                        <li ><a href="/ZILOM_MVC/public/visiteur/about">About</a></li>
+                                        <li class="dropdown current">
+                                            <a href="/ZILOM_MVC/public/visiteur/courses">Courses</a>
                                         </li>
                                         <li class="dropdown">
-                                            <a href="news.php">News</a>
-                                            
+                                            <a href="/ZILOM_MVC/public/visiteur/teachers-1"> Teachers</a>
                                         </li>
-                                        <li><a href="contact.php">Contact</a></li>
+                                        <li class="dropdown">
+                                            <a href="/ZILOM_MVC/public/visiteur/news">News</a>
+                                        </li>
+                                        <li ><a href="/ZILOM_MVC/public/visiteur/contact">Contact</a></li>
                                     </ul>
                                 </div>
 
@@ -474,7 +450,7 @@ $categories = Categorie::showCategories();
                     <div class="courses-one__single-content">
                         <h6 class="courses-one__single-content-name"><?= htmlspecialchars($courseItem['fullname']) ?></h6>
                         <h4 class="courses-one__single-content-title">
-                            <a href="course-details.php?id=<?= htmlspecialchars($courseItem['idCours']) ?>">
+                            <a href="/ZILOM_MVC/public/visiteur/cours_details?id=<?= htmlspecialchars($courseItem['idCours']) ?>">
                                 <?= htmlspecialchars($courseItem['titre']) ?>
                             </a>
                         </h4>
