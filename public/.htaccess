@@ -1,6 +1,12 @@
 RewriteEngine On
 RewriteBase /ZILOM_MVC/public/
-RewriteCond %{REQUEST_URI} !^/ZILOM_MVC/public/assets/
+
+# Autoriser l'accès aux fichiers statiques (CSS, JS, images)
+RewriteCond %{REQUEST_URI} !^/ZILOM_MVC/public/assets/ [NC]
+
+# Empêcher la réécriture si le fichier ou dossier existe
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Rediriger tout vers index.php RewriteRule ^(.*)$ index.php?/$1 [L,QSA]

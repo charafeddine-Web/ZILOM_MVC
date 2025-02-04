@@ -1,12 +1,4 @@
 
-<?php 
-session_start(); 
-$error_message = isset($_SESSION['error_message']) ? $_SESSION['error_message'] : [];
-$success_message = isset($_SESSION['success_message']) ? $_SESSION['success_message'] : [];
-unset($_SESSION['error_message']);
-unset($_SESSION['success_message']);
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,36 +8,36 @@ unset($_SESSION['success_message']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home  || Udemey </title>
     <!-- favicons Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicons/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicons/favicon-16x16.png" />
-    <link rel="manifest" href="../assets/images/favicons/site.webmanifest" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="./assets/images/favicons/site.webmanifest" />
     <meta name="description" content="Crsine HTML Template For Car Services" />
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../assets/vendors/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../assets/vendors/animate/animate.min.css" />
-    <link rel="stylesheet" href="../assets/vendors/animate/custom-animate.css" />
-    <link rel="stylesheet" href="../assets/vendors/fontawesome/css/all.min.css" />
-    <link rel="stylesheet" href="../assets/vendors/jarallax/jarallax.css" />
-    <link rel="stylesheet" href="../assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
-    <link rel="stylesheet" href="../assets/vendors/nouislider/nouislider.min.css" />
-    <link rel="stylesheet" href="../assets/vendors/nouislider/nouislider.pips.css" />
-    <link rel="stylesheet" href="../assets/vendors/odometer/odometer.min.css" />
-    <link rel="stylesheet" href="../assets/vendors/swiper/swiper.min.css" />
-    <link rel="stylesheet" href="../assets/vendors/icomoon-icons/style.css">
-    <link rel="stylesheet" href="../assets/vendors/tiny-slider/tiny-slider.min.css" />
-    <link rel="stylesheet" href="../assets/vendors/reey-font/stylesheet.css" />
-    <link rel="stylesheet" href="../assets/vendors/owl-carousel/owl.carousel.min.css" />
-    <link rel="stylesheet" href="../assets/vendors/owl-carousel/owl.theme.default.min.css" />
-    <link rel="stylesheet" href="../assets/vendors/twentytwenty/twentytwenty.css" />
+    <link rel="stylesheet" href="./assets/vendors/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/vendors/animate/animate.min.css" />
+    <link rel="stylesheet" href="./assets/vendors/animate/custom-animate.css" />
+    <link rel="stylesheet" href="./assets/vendors/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="./assets/vendors/jarallax/jarallax.css" />
+    <link rel="stylesheet" href="./assets/vendors/jquery-magnific-popup/jquery.magnific-popup.css" />
+    <link rel="stylesheet" href="./assets/vendors/nouislider/nouislider.min.css" />
+    <link rel="stylesheet" href="./assets/vendors/nouislider/nouislider.pips.css" />
+    <link rel="stylesheet" href="./assets/vendors/odometer/odometer.min.css" />
+    <link rel="stylesheet" href="./assets/vendors/swiper/swiper.min.css" />
+    <link rel="stylesheet" href="./assets/vendors/icomoon-icons/style.css">
+    <link rel="stylesheet" href="./assets/vendors/tiny-slider/tiny-slider.min.css" />
+    <link rel="stylesheet" href="./assets/vendors/reey-font/stylesheet.css" />
+    <link rel="stylesheet" href="./assets/vendors/owl-carousel/owl.carousel.min.css" />
+    <link rel="stylesheet" href="./assets/vendors/owl-carousel/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="./assets/vendors/twentytwenty/twentytwenty.css" />
 
     <!-- template styles -->
-    <link rel="stylesheet" href="../assets/css/zilom.css" />
-    <link rel="stylesheet" href="../assets/css/zilom-responsive.css" />
+    <link rel="stylesheet" href="./assets/css/zilom.css" />
+    <link rel="stylesheet" href="./assets/css/zilom-responsive.css" />
     <style>
              
 .logout {
@@ -100,7 +92,7 @@ unset($_SESSION['success_message']);
 <body>
 
     <div class="preloader">
-        <img class="preloader__image" width="60" src="../assets/images/loader.png" alt="" />
+        <img class="preloader__image" width="60" src="./assets/images/loader.png" alt="" />
     </div>
 
     <!-- /.preloader -->
@@ -112,7 +104,7 @@ unset($_SESSION['success_message']);
                     <div class="main-header--one__top-inner clearfix">
                         <div class="main-header--one__top-left">
                             <div class="main-header--one__top-logo">
-                                <a href="../index.php"><img src="../assets/images/resources/logo-1.png" alt="" /></a>
+                                <a href="../index.php"><img src="./assets/images/resources/logo-1.png" alt="" /></a>
                             </div>
                         </div>
 
@@ -240,7 +232,7 @@ unset($_SESSION['success_message']);
         <!--Registration One Start-->
         <section class="registration-one jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%">
             <div class="registration-one__bg"
-                style="background-image: url(../assets/images/resources/registration-one-bg.jpg);"></div>
+                style="background-image: url(../public/assets/images/resources/registration-one-bg.jpg);"></div>
             <div class="container">
                 <div class="row">
                     <!--Start Registration One Left-->
@@ -283,7 +275,7 @@ unset($_SESSION['success_message']);
                                     <?php endforeach; ?>
                                     </div>
                                 <?php endif; ?>
-                                    <form method="post" action="register_logic.php">
+                                    <form method="post" action="/register">
                                         <div class="form-group">
                                             <input type="text" name="nom" placeholder=" First Name" required="">
                                         </div>
@@ -349,9 +341,9 @@ unset($_SESSION['success_message']);
                     <!--Start Newsletter One Right-->
                     <div class="col-xl-6 col-lg-6">
                         <div class="newsletter-one__right">
-                            <div class="shape1 zoom-fade"><img src="../assets/images/shapes/thm-shape2.png" alt="" /></div>
+                            <div class="shape1 zoom-fade"><img src="./assets/images/shapes/thm-shape2.png" alt="" /></div>
                             <div class="shape2 wow slideInRight" data-wow-delay="100ms" data-wow-duration="2500ms"><img
-                                    src="../assets/images/shapes/thm-shape3.png" alt="" /></div>
+                                    src="./assets/images/shapes/thm-shape3.png" alt="" /></div>
                             <div class="newsletter-form wow slideInDown" data-wow-delay="100ms"
                                 data-wow-duration="1500ms">
                                 <form action="#">
@@ -374,7 +366,7 @@ unset($_SESSION['success_message']);
 
         <!--Start Footer One-->
         <footer class="footer-one">
-            <div class="footer-one__bg" style="background-image: url(../assets/images/backgrounds/footer.jpg);">
+            <div class="footer-one__bg" style="background-image: url(../public/assets/images/backgrounds/footer.jpg);">
             </div><!-- /.footer-one__bg -->
             <div class="footer-one__top">
                 <div class="container">
@@ -383,7 +375,7 @@ unset($_SESSION['success_message']);
                         <div class="col-xl-2 col-lg-4 col-md-4 wow animated fadeInUp" data-wow-delay="0.1s">
                             <div class="footer-widget__column footer-widget__about">
                                 <div class="footer-widget__about-logo">
-                                    <a href="../index.php"><img src="../assets/images/resources/footer-logo.png" alt=""></a>
+                                    <a href="../index.php"><img src="./assets/images/resources/footer-logo.png" alt=""></a>
                                 </div>
                             </div>
                         </div>
@@ -473,7 +465,7 @@ unset($_SESSION['success_message']);
             <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
 
             <div class="logo-box">
-                <a href="../index.php" aria-label="logo image"><img src="../assets/images/resources/mobilemenu_logo.png"
+                <a href="../index.php" aria-label="logo image"><img src="./assets/images/resources/mobilemenu_logo.png"
                         width="155" alt="" /></a>
             </div>
             <!-- /.logo-box -->
@@ -526,32 +518,32 @@ unset($_SESSION['success_message']);
     <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
 
 
-    <script src="../assets/vendors/jquery/jquery-3.5.1.min.js"></script>
-    <script src="../assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/vendors/jarallax/jarallax.min.js"></script>
-    <script src="../assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
-    <script src="../assets/vendors/jquery-appear/jquery.appear.min.js"></script>
-    <script src="../assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
-    <script src="../assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="../assets/vendors/jquery-validate/jquery.validate.min.js"></script>
-    <script src="../assets/vendors/nouislider/nouislider.min.js"></script>
-    <script src="../assets/vendors/odometer/odometer.min.js"></script>
-    <script src="../assets/vendors/swiper/swiper.min.js"></script>
-    <script src="../assets/vendors/tiny-slider/tiny-slider.min.js"></script>
-    <script src="../assets/vendors/wnumb/wNumb.min.js"></script>
-    <script src="../assets/vendors/wow/wow.js"></script>
-    <script src="../assets/vendors/isotope/isotope.js"></script>
-    <script src="../assets/vendors/countdown/countdown.min.js"></script>
-    <script src="../assets/vendors/owl-carousel/owl.carousel.min.js"></script>
-    <script src="../assets/vendors/twentytwenty/twentytwenty.js"></script>
-    <script src="../assets/vendors/twentytwenty/jquery.event.move.js"></script>
-    <script src="../assets/vendors/parallax/parallax.min.js"></script>
+    <script src="./assets/vendors/jquery/jquery-3.5.1.min.js"></script>
+    <script src="./assets/vendors/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/vendors/jarallax/jarallax.min.js"></script>
+    <script src="./assets/vendors/jquery-ajaxchimp/jquery.ajaxchimp.min.js"></script>
+    <script src="./assets/vendors/jquery-appear/jquery.appear.min.js"></script>
+    <script src="./assets/vendors/jquery-circle-progress/jquery.circle-progress.min.js"></script>
+    <script src="./assets/vendors/jquery-magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="./assets/vendors/jquery-validate/jquery.validate.min.js"></script>
+    <script src="./assets/vendors/nouislider/nouislider.min.js"></script>
+    <script src="./assets/vendors/odometer/odometer.min.js"></script>
+    <script src="./assets/vendors/swiper/swiper.min.js"></script>
+    <script src="./assets/vendors/tiny-slider/tiny-slider.min.js"></script>
+    <script src="./assets/vendors/wnumb/wNumb.min.js"></script>
+    <script src="./assets/vendors/wow/wow.js"></script>
+    <script src="./assets/vendors/isotope/isotope.js"></script>
+    <script src="./assets/vendors/countdown/countdown.min.js"></script>
+    <script src="./assets/vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="./assets/vendors/twentytwenty/twentytwenty.js"></script>
+    <script src="./assets/vendors/twentytwenty/jquery.event.move.js"></script>
+    <script src="./assets/vendors/parallax/parallax.min.js"></script>
 
 
     <script src="http://maps.google.com/maps/api/js?key=AIzaSyATY4Rxc8jNvDpsK8ZetC7JyN4PFVYGCGM"></script>
 
     <!-- template js -->
-    <script src="../assets/js/zilom.js"></script>
+    <script src="./assets/js/zilom.js"></script>
 
 
 </body>

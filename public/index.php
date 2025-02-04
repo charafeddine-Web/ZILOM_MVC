@@ -14,8 +14,16 @@ require_once  __DIR__ .'/../Core/Router.php';
 // Initialisation du router
 $router = new Router();
 //Auth
+
+// Routes pour afficher les pages
+$router->add('GET', '/register', 'AuthController', 'register_pg');
+$router->add('GET', '/login', 'AuthController', 'login_pg');
+// Routes pour gérer les soumissions de formulaires
 $router->add('POST', '/register', 'AuthController', 'register');
-$router->add('GET', '/login', 'AuthController', 'login');
+$router->add('POST', '/login', 'AuthController', 'login');
+
+// Route pour la déconnexion
+//$router->add('GET', '/logout', 'AuthController', 'logout');
 
 //Visiteur
 $router->add('GET', '/', 'CoursController', 'index');
@@ -38,8 +46,7 @@ $router->add('GET', '/visiteur/contact', 'VisiteurController', 'contact');
 
 //admin
 $router->add('GET', 'admin', 'AdminController', 'index');
-$router->add('POST', 'login', 'AuthController', 'login');
-$router->add('POST', 'logout', 'AuthController', 'logout');
+
 
 
 
