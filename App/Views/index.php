@@ -186,7 +186,7 @@
                                                 <div class="b-flex justify-content-end flex ">
 
                                                 <div>
-                                                    <form action="./logout.php" method="POST">
+                                                    <form action="/ZILOM_MVC/public/logout" method="POST">
                                                     <span><?php if(isset ($_SESSION['user']))
                                                 {echo $_SESSION['fullname'];}?></span>
                                                         <button type="submit" name="submit" class="logout ">Logout</button>

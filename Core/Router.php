@@ -23,10 +23,8 @@ class Router
         foreach ($this->routes as $route) {
             if ($route['method'] === $requestMethod && $route['path'] === $requestPath) {
                 $controllerClass = "App\\Controllers\\" . $route['controller'];
-
                 if (class_exists($controllerClass)) {
                     $controller = new $controllerClass();
-
                     if (method_exists($controller, $route['action'])) {
                         return call_user_func([$controller, $route['action']]);
                     } else {
@@ -40,6 +38,6 @@ class Router
 
         // Si aucune route ne correspond
         http_response_code(404);
-        echo "404 - Page non trouvée";
+        require '../App/views/404.php';
     }
 }

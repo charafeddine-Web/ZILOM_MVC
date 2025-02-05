@@ -1,34 +1,4 @@
-<?php
-require_once '../autoload.php';
-use Classes\Categorie;
-use Classes\Cours;
-session_start();
 
-
-if (!isset($_SESSION['id_user']) || (isset($_SESSION['id_role']) && $_SESSION['id_role'] !== 3)) {
-    header("Location: ../index.php");
-    exit;
-}
-$searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
-
-
-$page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
-$limit = 8;
-$courses = Cours::SearchCours($searchQuery, $page, $limit);
-$total_courses = Cours::getTotalCoursesserch($searchQuery);
-$total_pages = ceil($total_courses / $limit);
-
-// Fetch categories
-$categories = Categorie::showCategories();
-
-// Group courses by category
-$coursesByCategory = [];
-if ($courses && count($courses) > 0) {
-    foreach ($courses as $course) {
-        $coursesByCategory[$course['categorie_id']][] = $course;
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 

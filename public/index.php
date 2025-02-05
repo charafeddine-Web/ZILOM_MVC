@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/assets/vendors/autoload.php';
-
 require_once __DIR__ . '/../App/Controllers/AuthController.php';
 require_once __DIR__ . '/../App/Controllers/AdminController.php';
 require_once __DIR__ . '/../App/Controllers/EtudiantController.php';
@@ -9,13 +8,17 @@ require_once __DIR__ . '/../App/Controllers/VisiteurController.php';
 require_once __DIR__ . '/../App/Controllers/CoursController.php';
 require_once  __DIR__ .'/../Core/Router.php';
 
-//use App\Controllers\VisiteurController;
 
-// Initialisation du router
 $router = new Router();
+
 //Auth
+$router->add('GET', '/register', 'AuthController', 'register_pg');
+$router->add('GET', '/login', 'AuthController', 'login_pg');
 $router->add('POST', '/register', 'AuthController', 'register');
-$router->add('GET', '/login', 'AuthController', 'login');
+$router->add('POST', '/login', 'AuthController', 'login');
+
+//logout
+$router->add('POST', '/logout', 'AuthController', 'logout');
 
 //Visiteur
 $router->add('GET', '/', 'CoursController', 'index');
@@ -29,22 +32,19 @@ $router->add('GET', '/visiteur/teachers-1', 'VisiteurController', 'teachers_1');
 $router->add('GET', '/visiteur/contact', 'VisiteurController', 'contact');
 
 
-//Enseignant
-
-
 //Etudiant
+$router->add('GET', '/etudient/indexEtu', 'EtudiantController', 'index');
+$router->add('GET', '/etudient/mecours', 'EtudiantController', 'mecours');
+$router->add('GET', '/etudient/cours-details', 'EtudiantController', 'cours_details');
+$router->add('GET', '/etudient/inscriprion', 'EtudiantController', 'inscriprion');
+
+//Enseignant
+$router->add('GET', '/enseignant/indexEns', 'EnseignantController', 'index');
 
 
 
 //admin
-$router->add('GET', 'admin', 'AdminController', 'index');
-$router->add('POST', 'login', 'AuthController', 'login');
-$router->add('POST', 'logout', 'AuthController', 'logout');
-
-
-
-
-
+$router->add('GET', '/admin/index', 'AdminController', 'index');
 
 
 // Dispatcher la requête

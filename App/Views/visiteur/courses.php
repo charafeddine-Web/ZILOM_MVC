@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -315,21 +316,20 @@
                                     <div class="main-menu__right">
                                         <div class="main-menu__right-login-register">
                                         <?php 
-                                        
-                                    
+
                                             if(!isset($_SESSION['id_user'])){
                                             ?>
-                                                <ul class="list-unstyled">
-                                                    <li><a href="/ZILOM_MVC/public/login">Login</a></li>
-                                                    <li><a href="/ZILOM_MVC/public/register">Register</a></li>
-                                                </ul>
+                                            <ul class="list-unstyled">
+                                                <li><a href="/ZILOM_MVC/public/login">Login</a></li>
+                                                <li><a href="/ZILOM_MVC/public/register">Register</a></li>
+                                            </ul>
                                             <?php }else { 
 
                                             ?>
                                                 <div class="b-flex justify-content-end flex ">
                                                
                                                 <div>
-                                                    <form action="../logout.php" method="POST">
+                                                    <form action="/ZILOM_MVC/public/logout" method="POST">
                                                     <span><?php if(isset ($_SESSION['user']))
                                                 {echo $_SESSION['fullname'];}?></span>
                                                         <button type="submit" name="submit" class="logout ">Logout</button>
@@ -450,7 +450,7 @@
                     <div class="courses-one__single-content">
                         <h6 class="courses-one__single-content-name"><?= htmlspecialchars($courseItem['fullname']) ?></h6>
                         <h4 class="courses-one__single-content-title">
-                            <a href="/ZILOM_MVC/public/visiteur/cours_details?id=<?= htmlspecialchars($courseItem['idCours']) ?>">
+                            <a href="course-details.php?id=<?= htmlspecialchars($courseItem['idCours']) ?>">
                                 <?= htmlspecialchars($courseItem['titre']) ?>
                             </a>
                         </h4>

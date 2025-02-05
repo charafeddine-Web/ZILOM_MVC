@@ -1,21 +1,4 @@
-<?php
-require_once '../autoload.php';
-use Classes\Inscription;
-session_start();
 
-if (!isset($_SESSION['id_user']) || (isset($_SESSION['id_role']) && $_SESSION['id_role'] !== 3)) {
-  header("Location: ../index.php");
-  exit;
-}
-
-if (isset($_SESSION['id_user'])){
-    $etudient=$_SESSION['id_user'];
-};
-$insecription = new Inscription();
-$mecours=$insecription->getAllInscriptionsEtudient($etudient);
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
