@@ -1,14 +1,10 @@
 <?php
-session_start();
 require_once '../autoload.php';
 
 use Classes\Enseignant;
 use Classes\Inscription;
 
-if (!isset($_SESSION['id_user']) || (isset($_SESSION['id_role']) && $_SESSION['id_role'] !== 2)) {
-  header("Location: ../index.php");
-  exit;
-}
+
 if(isset($_SESSION['id_user'])){
   $teacherId=$_SESSION['id_user'];
   $teacherfullname=$_SESSION['fullname'];

@@ -80,10 +80,10 @@
 
                 <!-- Menu Items (Hidden on Mobile) -->
                 <div class="hidden lg:flex space-x-6">
-                    <a href="indexEtu.php" class="text-white flex items-center hover:text-gray-200">
+                    <a href="/ZILOM_MVC/public/etudient/indexEtu" class="text-white flex items-center hover:text-gray-200">
                         <i class="fas fa-book mr-2"></i>All Courses
                     </a>
-                    <a href="mecours.php" class="text-white flex items-center hover:text-gray-200">
+                    <a href="/ZILOM_MVC/public/etudient/mecours" class="text-white flex items-center hover:text-gray-200">
                         <i class="fas fa-folder-open mr-2"></i>My Courses
                     </a>
                     <div class="relative">
@@ -100,7 +100,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <form action="../logout.php" method="post">
+                                    <form action="/ZILOM_MVC/public/logout" method="post">
                                         <button type="submit" name="submit" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                                         Logout
                                         </button>
@@ -127,8 +127,8 @@
             </button>
         </div>
         <div class="flex flex-col items-center">
-            <a href="indexEtu.php" class="text-white py-2">All Courses</a>
-            <a href="mecours.php" class="text-white py-2">My Courses</a>
+            <a href="/ZILOM_MVC/public/etudient/indexEtu" class="text-white py-2">All Courses</a>
+            <a href="/ZILOM_MVC/public/etudient/mecours" class="text-white py-2">My Courses</a>
             <div class="relative">
                         <!-- Profile Link -->
                         <a href="#" class="text-white flex items-center hover:text-gray-200" id="profileToggle">
@@ -143,7 +143,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <form action="../logout.php" method="post">
+                                    <form action="/ZILOM_MVC/public/logout" method="post">
                                         <button type="submit" name="submit" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                                         Logout
                                         </button>

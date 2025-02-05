@@ -1,6 +1,7 @@
 <?php
-
 namespace App\Controllers;
+session_start();
+
 require_once __DIR__ . '/../../public/assets/vendors/autoload.php';
 use App\Models\User;
 use App\Models\Etudiant;
@@ -25,6 +26,7 @@ class AuthController
                 exit();
             }
             $user = User::login($email, $password);
+            var_dump($user);
             if (is_array($user)) {
                 if ($user['status'] === 'suspended') {
                     $error_message[] = "Votre compte est suspendu. Veuillez contacter l'administrateur.";
@@ -45,9 +47,6 @@ class AuthController
                 }elseif($_SESSION['id_role'] == 1) {
                     header("Location: /ZILOM_MVC/public/admin/index");
                     exit();
-                }else{
-                    header("Location: /ZILOM_MVC/public/login");
-                    exit();
                 }
             } else {
                 $error_message[] = $user;
@@ -56,7 +55,6 @@ class AuthController
                 exit();
             }
         }
-        require_once __DIR__ . '/../../App/Views/visiteur/login.php';
     }
     public function register(){
 

@@ -1,12 +1,8 @@
 <?php
 require_once '../autoload.php';
 use Classes\Categorie;
-session_start();
 
-if (!isset($_SESSION['id_user']) || (isset($_SESSION['id_role']) && $_SESSION['id_role'] !== 1)) {
-    header("Location: ../index.php");
-    exit;
-}
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['addCategory'])) {
     $categoryName = $_POST['categoryName'];

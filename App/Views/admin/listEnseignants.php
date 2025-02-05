@@ -2,12 +2,7 @@
 require_once '../autoload.php'; 
 use Classes\Enseignant;
 use Classes\Admin;
-session_start();
 
-if (!isset($_SESSION['id_user']) || (isset($_SESSION['id_role']) && $_SESSION['id_role'] !== 1)) {
-    header("Location: ../index.php");
-    exit;
-}
 
 try {
     $resultadmin =  Admin::ViewStatistic();

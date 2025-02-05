@@ -6,13 +6,7 @@ use Classes\Cours_Video;
 use Classes\Cours_Text;
 use Classes\Enseignant;
 use Classes\Tag;
-session_start();
 
-
-if (!isset($_SESSION['id_user']) || (isset($_SESSION['id_role']) && $_SESSION['id_role'] !== 2)) {
-  header("Location: ../index.php");
-  exit;
-}
 
 if(isset($_SESSION['id_user'])){
   $teacherId=$_SESSION['id_user'];

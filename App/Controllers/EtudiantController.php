@@ -1,7 +1,6 @@
 <?php
 namespace App\Controllers;
 
-//session_start();
 //if (!isset($_SESSION['id_user']) || (isset($_SESSION['id_role']) && $_SESSION['id_role'] !== 3)) {
 //    header("Location: ../public/index.php");
 //    exit;
@@ -16,7 +15,7 @@ use App\Models\Inscription;
 
 class EtudiantController
 {
-    public function index()
+    public function index_etudiant()
     {
         $searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
         $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
@@ -34,7 +33,7 @@ class EtudiantController
                 $coursesByCategory[$course['categorie_id']][] = $course;
             }
         }
-        require_once __DIR__ . '/../Views/etudiant/indexEtu.php';
+        require_once __DIR__ . '/../../App/Views/etudiant/indexEtu.php';
     }
 
     public function mecours(){
@@ -46,7 +45,6 @@ class EtudiantController
         require_once __DIR__ . '/../Views/etudiant/mecours.php';
     }
     public function cours_details(){
-
 
         if (isset($_SESSION['id_user'])) {
             $etudient = $_SESSION['id_user'];
@@ -67,9 +65,6 @@ class EtudiantController
         }
         $instructorName = htmlspecialchars($course['enseignant_nom']);
         $categoryName = htmlspecialchars($course['categorie_nom']);
-
-
-
 // pour teset si etudient inscrire sur une cours or no
         $inscription = new Inscription();
         $isEnrolled = $inscription->checkEnrollment($etudient, $courseId); //

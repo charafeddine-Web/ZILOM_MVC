@@ -33,13 +33,15 @@ $router->add('GET', '/visiteur/contact', 'VisiteurController', 'contact');
 
 
 //Etudiant
-$router->add('GET', '/etudient/indexEtu', 'EtudiantController', 'index');
+$router->add('GET', '/etudient/indexEtu', 'EtudiantController', 'index_etudiant');
 $router->add('GET', '/etudient/mecours', 'EtudiantController', 'mecours');
 $router->add('GET', '/etudient/cours-details', 'EtudiantController', 'cours_details');
-$router->add('GET', '/etudient/inscriprion', 'EtudiantController', 'inscriprion');
+$router->add('GET', '/etudient/inscriprion', 'EtudiantController', 'inscriprionc');
 
 //Enseignant
 $router->add('GET', '/enseignant/indexEns', 'EnseignantController', 'index');
+$router->add('GET', '/enseignant/cours', 'EnseignantController', 'cours');
+$router->add('GET', '/enseignant/etudient', 'EnseignantController', 'etudient');
 
 
 

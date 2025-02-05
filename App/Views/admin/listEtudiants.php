@@ -1,12 +1,7 @@
 <?php
 require_once '../autoload.php'; 
 use Classes\Etudiant;
-session_start();
 
-if (!isset($_SESSION['id_user']) || (isset($_SESSION['id_role']) && $_SESSION['id_role'] !== 1)) {
-    header("Location: ../index.php");
-    exit;
-}
 
 try {
    

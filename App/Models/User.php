@@ -1,8 +1,10 @@
 <?php
-
 namespace App\Models;
-require_once __DIR__ . '/../../public/assets/vendors/autoload.php';
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once __DIR__ . '/../../public/assets/vendors/autoload.php';
 use PDO;
 use App\Models\DatabaseConnection;
 
@@ -31,14 +33,22 @@ class User{
             if (!$pdo) {
                 return "Erreur de connexion à la base de données.";
             }
-            $query = "SELECT idUser, idRole, nom, prenom,status, password FROM users WHERE email = :email";
+            $query = "SELECT 
+            iduser AS idUser, 
+            idrole AS idRole, 
+            nom, 
+            prenom, 
+            status, 
+            password 
+          FROM users 
+          WHERE email = :email";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->execute();
 
             if ($stmt->rowCount() === 1) {
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
-                if (password_verify($password, $user['password'])) {
+                if ($user && password_verify($password, $user['password'])) {
                     return $user;
                 } else {
                     error_log("Password verification failed for email: " . $email);
@@ -56,9 +66,7 @@ class User{
 
 
     public static function logout() {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
+
         session_unset();
         session_destroy();
         if (isset($_COOKIE[session_name()])) {

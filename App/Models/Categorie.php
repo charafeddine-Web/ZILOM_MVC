@@ -76,7 +76,7 @@ class Categorie
     {
         try {
             $pdo = DatabaseConnection::getInstance();
-            $sql = "SELECT *FROM categories";
+            $sql = "SELECT * FROM categories";
             $stmt = $pdo->prepare($sql);
 
             $stmt->execute();
