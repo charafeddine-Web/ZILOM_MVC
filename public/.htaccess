@@ -9,4 +9,4 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php [QSA,L]
 
-# Rediriger tout vers index.phpRewriteRule ^(.*)$ index.php?/$1 [L,QSA]
+# Rediriger tout vers index.php RewriteRule ^(.*)$ index.php?/$1 [L,QSA]

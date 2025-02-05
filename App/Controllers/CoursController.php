@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
-
 session_start();
+
 //if (!isset($_SESSION['id_user']) || (isset($_SESSION['id_role']) && $_SESSION['id_role'] !== 2)) {
 //    header("Location: ../public/index.php");
 //    exit;

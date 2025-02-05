@@ -1,41 +1,4 @@
-<?php
-require_once '../autoload.php';
-use Classes\Cours;
-use Classes\Inscription;
-session_start();
 
-
-if (!isset($_SESSION['id_user']) || (isset($_SESSION['id_role']) && $_SESSION['id_role'] !== 3)) {
-    header("Location: ../index.php");
-    exit;
-}
-
-if (isset($_SESSION['id_user'])) {
-    $etudient = $_SESSION['id_user'];
-}
-;
-$courseId = isset($_GET['id']) ? (int) $_GET['id'] : 0;
-
-if ($courseId <= 0) {
-    echo "Invalid course ID.";
-    exit;
-}
-
-$course = Cours::getCoursById($courseId);
-
-if (!$course) {
-    echo "Course not found.";
-    exit;
-}
-$instructorName = htmlspecialchars($course['enseignant_nom']);
-$categoryName = htmlspecialchars($course['categorie_nom']);
-
-
-
-// pour teset si etudient inscrire sur une cours or no 
-$inscription = new Inscription();
-$isEnrolled = $inscription->checkEnrollment($etudient, $courseId); //
-?>
 
 <!DOCTYPE html>
 <html lang="en">
