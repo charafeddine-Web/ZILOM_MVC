@@ -188,7 +188,7 @@
                                                 <div class="b-flex justify-content-end flex ">
 
                                                 <div>
-                                                    <form action="./logout.php" method="POST">
+                                                    <form action="/ZILOM_MVC/public/logout" method="POST">
                                                     <span><?php if(isset ($_SESSION['user']))
                                                 {echo $_SESSION['fullname'];}?></span>
                                                         <button type="submit" name="submit" class="logout ">Logout</button>
@@ -275,9 +275,8 @@
                                     </div>
                                 <?php endif; ?>
                                 <div class="form-box">
-                               
-                                    <form method="post" action="/login">
-                                        <div class="form-group">
+
+                                    <form action="/ZILOM_MVC/public/login" method="POST">                                        <div class="form-group">
                                             <label for="email">Email</label>
                                             <input type="email" name="email" placeholder="Your Email" required="">
                                         </div>

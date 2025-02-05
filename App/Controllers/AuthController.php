@@ -11,7 +11,6 @@ class AuthController
 {
     public function login()
     {
-
         $success_message = "";
 
         if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submitlogin'])) {
@@ -26,7 +25,7 @@ class AuthController
 
             if (!empty($error_message)) {
                 $_SESSION['error_message'] = $error_message;
-                header('Location: /login');
+                header('Location: /ZILOM_MVC/public/login');
                 exit();
             }
 
@@ -37,7 +36,7 @@ class AuthController
                 if ($user['status'] === 'suspended') {
                     $error_message[] = "Votre compte est suspendu. Veuillez contacter l'administrateur.";
                     $_SESSION['error_message'] = $error_message;
-                    header('Location: /login');
+                    header('Location: /ZILOM_MVC/public/login');
                     exit();
                 }
 
@@ -59,7 +58,7 @@ class AuthController
             } else {
                 $error_message[] = $user;
                 $_SESSION['error_message'] = $error_message;
-                header('Location: /login');
+                header('Location: /ZILOM_MVC/public/login');
                 exit();
             }
         }
@@ -96,7 +95,7 @@ class AuthController
 
             if (!empty($error_message)) {
                 $_SESSION['error_message'] = $error_message;
-                header('Location: ./register.php');
+                header('Location: /ZILOM_MVC/public/login');
                 exit();
             }
 
@@ -121,7 +120,7 @@ class AuthController
             } else {
                 $error_message[] = "Registration failed. Please try again.";
                 $_SESSION['error_message'] = $error_message;
-                header('Location: ./register.php');
+                header('Location: /ZILOM_MVC/public/login');
                 exit();
             }
         }
@@ -145,14 +144,17 @@ class AuthController
 
 
         if (isset($_SESSION['id_user'])) {
-            header("Location: ../index.php");
+            header("Location: /ZILOM_MVC/public/");
             exit;
         }
         require_once __DIR__ . '/../../App/Views/visiteur/login.php';
     }
     public function logout(){
-        session_destroy();
-        header('Location: ./login.php');
-        exit;
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit'])) {
+            error_log("Logout triggered");
+            User::logout();
+            header('Location: /ZILOM_MVC/public/');
+            exit();
+        }
     }
 }

@@ -316,13 +316,12 @@
                                     <div class="main-menu__right">
                                         <div class="main-menu__right-login-register">
                                         <?php 
-                                        
-                                    
+
                                             if(!isset($_SESSION['id_user'])){
                                             ?>
                                             <ul class="list-unstyled">
-                                                <li><a href="./login.php">Login</a></li>
-                                                <li><a href="./register.php">Register</a></li>
+                                                <li><a href="/ZILOM_MVC/public/login">Login</a></li>
+                                                <li><a href="/ZILOM_MVC/public/register">Register</a></li>
                                             </ul>
                                             <?php }else { 
 
@@ -330,7 +329,7 @@
                                                 <div class="b-flex justify-content-end flex ">
                                                
                                                 <div>
-                                                    <form action="../logout.php" method="POST">
+                                                    <form action="/ZILOM_MVC/public/logout" method="POST">
                                                     <span><?php if(isset ($_SESSION['user']))
                                                 {echo $_SESSION['fullname'];}?></span>
                                                         <button type="submit" name="submit" class="logout ">Logout</button>

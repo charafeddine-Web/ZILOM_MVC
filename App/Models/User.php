@@ -55,8 +55,6 @@ class User{
     }
 
 
-
-
     public static function logout() {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
