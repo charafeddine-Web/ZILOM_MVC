@@ -77,27 +77,9 @@ class AdminController
 
     }
     public function listtags(){
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submittags'])) {
-            $tags = explode(',', $_POST['tags']);
-            try {
-                foreach ($tags as $tag) {
-                    $tag = trim($tag);
-                    if (!empty($tag)) {
-                        $tag = new Tag(null, $tag);
-                        $tag->AddTag();
-                    }
-                }
-            } catch (\PDOException $e) {
-                echo "Error Adding Tags: " . $e->getMessage();
-            }
-        }
-
         $result = Tag::showstatic();
         $tags = Tag::GetTags();
-
         require_once __DIR__ . '/../Views/admin/listTags.php';
-
     }
 
 

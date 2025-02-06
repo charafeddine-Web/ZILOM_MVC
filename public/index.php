@@ -7,6 +7,7 @@ require_once __DIR__ . '/../App/Controllers/EnseignantController.php';
 require_once __DIR__ . '/../App/Controllers/VisiteurController.php';
 require_once __DIR__ . '/../App/Controllers/CoursController.php';
 require_once __DIR__ . '/../App/Controllers/CategoryController.php';
+require_once __DIR__ . '/../App/Controllers/TagController.php';
 
 require_once  __DIR__ .'/../Core/Router.php';
 
@@ -59,7 +60,7 @@ $router->add('POST', '/admin/category/add', 'CategoryController', 'addcategory')
 $router->add('GET', '/admin/category/Delete', 'CategoryController', 'deletecategory');
 $router->add('PUT', '/admin/category/Update', 'CategoryController', 'updatecategory');
 
-$router->add('POST', '/admin/listtags', 'TagController', 'addtags');
+$router->add('POST', '/admin/listtags/add', 'TagController', 'addtag');
 $router->add('GET', '/admin/listtags/delete', 'TagController', 'deletetag');
 
 

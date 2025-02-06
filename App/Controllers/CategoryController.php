@@ -53,7 +53,6 @@ class CategoryController
         }
     }
     public function deletecategory(){
-
         if (isset($_GET['idCategory'])) {
             $categoryId = $_GET['idCategory'];
             $category = new Categorie(null, null, null, null);

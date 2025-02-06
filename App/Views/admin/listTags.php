@@ -220,7 +220,7 @@
     </div>
     <div id="addTagsForm"
     class="add-tags-form fixed right-[-100%] rounded-xl w-full max-w-[400px] h-[580px] shadow-[2px_0_10px_rgba(0,0,0,0.1)] flex flex-col gap-5 transition-all duration-700 ease-in-out z-50 top-[166px] bg-white">
-    <form action="listTags.php" method="POST" enctype="multipart/form-data" class="flex flex-col gap-4 overflow-y-auto h-full p-6 pb-20" id="tagsForm">
+    <form action="/ZILOM_MVC/public/admin/listtags/add" method="POST" enctype="multipart/form-data" class="flex flex-col gap-4 overflow-y-auto h-full p-6 pb-20" id="tagsForm">
         <div class="flex justify-between items-center">
             <h2 class="text-2xl font-semibold">Add Tags</h2>
             <button type="button" id="closeTagsForm"
