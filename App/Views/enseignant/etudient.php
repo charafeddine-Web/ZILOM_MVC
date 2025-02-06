@@ -22,13 +22,13 @@
       <ul class="space-y-2">
        
         <li>
-          <a href="/ZILOM_MVC/public/indexEns" class="flex items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+          <a href="/ZILOM_MVC/public/enseignant/indexEns" class="flex items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
           <i class="fas fa-tachometer-alt text-sm"></i>
           <span>Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="/ZILOM_MVC/public/etudient" class="flex items-center gap-4 py-2 px-4 rounded-lg bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-md">
+          <a href="/ZILOM_MVC/public/enseignant/etudient" class="flex items-center gap-4 py-2 px-4 rounded-lg bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-md">
           <i class="fas fa-users text-sm"></i>
           <span>Étudiants</span>
           </a>

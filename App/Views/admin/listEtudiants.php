@@ -1,21 +1,4 @@
-<?php
-require_once '../autoload.php'; 
-use Classes\Etudiant;
 
-
-try {
-   
-    //pour statistic
-    $Etudiant = new Etudiant(null,null,null,null,null,null);
-    $result = $Etudiant->showAllEtudiant();
-    $static= $Etudiant->statistiqueEtudiants();
-    
-    
-} catch (\Exception $e) {
-    echo "Error: " . $e->getMessage();
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,37 +23,37 @@ try {
 <body class="">
     <!-- Side Bar -->
     <div class=" fixed top-0 left-0  w-[230px] h-[100%] z-50 overflow-hidden sidebar ">
-    <a href="./index.php" class="logo text-xl font-bold h-[56px] flex items-center text-[#1976D2] z-30 pb-[20px] pl-8 box-content">
+    <a href="/ZILOM_MVC/public/admin/listindextags" class="logo text-xl font-bold h-[56px] flex items-center text-[#1976D2] z-30 pb-[20px] pl-8 box-content">
         <img src="../assets/images/resources/logo-1.png" alt="" />
         </a>
         <ul class="side-menu w-full mt-12">
     <li class=" h-12 bg-transparent ml-2.5 rounded-l-full p-1">
-        <a href="./index.php">
+        <a href="/ZILOM_MVC/public/admin/index">
             <i class="fa-solid fa-chart-pie"></i> Statistic
         </a>
     </li>
     <li class="h-12 active bg-transparent ml-2.5 rounded-l-full p-1">
-        <a href="listEtudiants.php">
+        <a href="/ZILOM_MVC/public/admin/listetudient">
             <i class="fa-solid fa-graduation-cap"></i> Étudiants
         </a>
     </li>
     <li class="h-12 bg-transparent ml-1.5 rounded-l-full p-1">
-        <a href="listEnseignants.php">
+        <a href="/ZILOM_MVC/public/admin/listenseignant">
             <i class="fa-solid fa-chalkboard-teacher"></i> Enseignants
         </a>
     </li>
     <li class="h-12 bg-transparent ml-1.5 rounded-l-full p-1">
-        <a href="listCours.php">
+        <a href="/ZILOM_MVC/public/admin/listcourses">
             <i class="fa-solid fa-book-open"></i> Cours
         </a>
     </li>
     <li class="h-12 bg-transparent ml-1.5 rounded-l-full p-1">
-        <a href="listCategory.php">
+        <a href="/ZILOM_MVC/public/admin/listcategory">
             <i class="fa-solid fa-layer-group"></i> Catégories
         </a>
     </li>
     <li class="h-12 bg-transparent ml-1.5 rounded-l-full p-1">
-        <a href="listTags.php">
+        <a href="/ZILOM_MVC/public/admin/listtags">
             <i class="fa-solid fa-tags"></i> Tags
         </a>
     </li>
@@ -79,7 +62,7 @@ try {
 
 <ul class="side-menu w-full mt-12">
             <li class="h-12 bg-transparent ml-2.2 md:ml-2 rounded-l-full p-1">
-            <form action="../logout.php" method="POST">
+            <form action="/ZILOM_MVC/public/logout" method="POST">
                 <button type="submit" name="submit" class="logout flex">
                     <i class='bx bx-log-out-circle'></i> Logout
                 </button>
@@ -205,7 +188,7 @@ try {
                         foreach ($result as $r) {
                         
                             echo "<tr class='hover:bg-gray-100 transition-all duration-300'>";
-                            echo '<td class="border p-4 text-center text-sm font-medium text-gray-700">' . htmlspecialchars($r['idUser']) . '</td>';
+                            echo '<td class="border p-4 text-center text-sm font-medium text-gray-700">' . htmlspecialchars($r['iduser']) . '</td>';
                             echo '<td class="border p-4 text-center text-sm text-gray-700">' . htmlspecialchars($r['nom']) . '' . htmlspecialchars($r['prenom']) . '</td>';
                             echo '<td class="border p-4 text-center text-sm text-gray-700">' . htmlspecialchars($r['email']) . '</td>';
                             echo '<td class="border p-4 text-center text-sm text-gray-700">' . htmlspecialchars($r['date_creation']) . '</td>';
@@ -216,8 +199,8 @@ try {
                         echo '<span class="px-3 py-1 rounded-full ' . $statusClass . '">'
                             . htmlspecialchars(ucfirst($r['status'])) . '</span>';
                         echo '</td>';                            echo '<td class="border p-4 text-center">';
-                            echo '<a href="crud/banner_user.php?idUser=' . $r['idUser'] . '&idRole=' . $r['idRole'] . '" class=" bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-all duration-300 mx-2">Banner Etudient</a>';
-                            echo '<a href="crud/activie_user.php?idUser=' . $r['idUser'] . '&idRole=' . $r['idRole'] . '" class="  bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-all duration-300 mx-2">Active Etudient</a>';
+                            echo '<a href="ZILOM_MVC/public/admin/banneruser?idUser=' . $r['iduser'] . '&idRole=' . $r['idrole'] . '" class=" bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-all duration-300 mx-2">Banner Etudient</a>';
+                            echo '<a href="ZILOM_MVC/public/admin/activieuser?idUser=' . $r['iduser'] . '&idRole=' . $r['idrole'] . '" class="  bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-all duration-300 mx-2">Active Etudient</a>';
                             echo '</td>';
                             echo "</tr>";
                         }

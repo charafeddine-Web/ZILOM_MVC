@@ -1,16 +1,4 @@
-<?php
-require_once '../autoload.php';
-use Classes\Categorie;
-use Classes\Cours;
-use Classes\Admin;
 
-
-
-
-$resultd =  Admin::ViewStatistic();
-$result =  Cours::ViewStatisticcours();
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,37 +16,37 @@ $result =  Cours::ViewStatisticcours();
 
 <body class="">
     <div class=" fixed top-0 left-0  w-[230px] h-[100%] z-50 overflow-hidden sidebar ">
-    <a href="./index.php" class="logo text-xl font-bold h-[56px] flex items-center text-[#1976D2] z-30 pb-[20px] pl-8 box-content">
+    <a href="/ZILOM_MVC/public/admin/index" class="logo text-xl font-bold h-[56px] flex items-center text-[#1976D2] z-30 pb-[20px] pl-8 box-content">
         <img src="../assets/images/resources/logo-1.png" alt="" />
         </a>
         <ul class="side-menu w-full mt-12">
     <li class=" h-12 bg-transparent ml-2.5 rounded-l-full p-1">
-        <a href="./index.php">
+        <a href="/ZILOM_MVC/public/admin/index">
             <i class="fa-solid fa-chart-pie"></i> Statistic
         </a>
     </li>
     <li class="h-12 bg-transparent ml-2.5 rounded-l-full p-1">
-        <a href="listEtudiants.php">
+        <a href="/ZILOM_MVC/public/admin/listetudient">
             <i class="fa-solid fa-graduation-cap"></i> Étudiants
         </a>
     </li>
     <li class="h-12  bg-transparent ml-1.5 rounded-l-full p-1">
-        <a href="listEnseignants.php">
+        <a href="/ZILOM_MVC/public/admin/listenseignant">
             <i class="fa-solid fa-chalkboard-teacher"></i> Enseignants
         </a>
     </li>
     <li class="h-12 active bg-transparent ml-1.5 rounded-l-full p-1">
-        <a href="listCours.php">
+        <a href="/ZILOM_MVC/public/admin/listcourses">
             <i class="fa-solid fa-book-open"></i> Cours
         </a>
     </li>
     <li class="h-12 bg-transparent ml-1.5 rounded-l-full p-1">
-        <a href="listCategory.php">
+        <a href="/ZILOM_MVC/public/admin/listcategory">
             <i class="fa-solid fa-layer-group"></i> Catégories
         </a>
     </li>
     <li class="h-12  bg-transparent ml-1.5 rounded-l-full p-1">
-        <a href="listTags.php">
+        <a href="/ZILOM_MVC/public/admin/listtags">
             <i class="fa-solid fa-tags"></i> Tags
         </a>
     </li>
@@ -67,7 +55,7 @@ $result =  Cours::ViewStatisticcours();
        
 <ul class="side-menu w-full mt-12">
             <li class="h-12 bg-transparent ml-2.2 md:ml-2 rounded-l-full p-1">
-            <form action="../logout.php" method="POST">
+            <form action="/ZILOM_MVC/public/logout" method="POST">
                 <button type="submit" name="submit" class="logout flex">
                     <i class='bx bx-log-out-circle'></i> Logout
                 </button>
@@ -204,7 +192,6 @@ $result =  Cours::ViewStatisticcours();
             <tbody>
                 <?php
                 try {
-                    $cours = Cours::ShowallCours();
                     if ($cours) {
                         foreach ($cours as $cr) {
                             $availabilityColor = $cr['type'] === 'text' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';

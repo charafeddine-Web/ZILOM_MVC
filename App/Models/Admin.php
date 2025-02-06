@@ -8,46 +8,49 @@ class Admin extends User{
         try {
             $pdo = DatabaseConnection::getInstance();
             $query = "
-                SELECT 
-                    -- Total  enseignants
-                    (SELECT COUNT(*) FROM users WHERE idRole = 2) AS total_enseignant,
-                    
-                    -- Total  etudiants
-                    (SELECT COUNT(*) FROM users WHERE idRole = 3) AS total_etudient,
-                    
-                    -- Total cours
-                    (SELECT COUNT(*) FROM cours) AS total_cours,
-                    
-                    -- Total  active users
-                    (SELECT COUNT(*) FROM users WHERE status = 'active') AS total_users_activie,
-                    
-                    -- Courses per category
-                    (SELECT GROUP_CONCAT( nom,' => ',idCategory ORDER BY idCategory ASC) 
-                     FROM categories) AS courses_per_category,
-                     
-                    -- Course with the most students
-                    (SELECT titre 
-                     FROM cours 
-                     WHERE idCours = 
-                        (SELECT cours_id 
-                         FROM inscriptions 
-                         GROUP BY cours_id 
-                         ORDER BY COUNT(*) DESC 
-                         LIMIT 1)
-                    ) AS course_with_most_students,
-                    
-                    -- Top 3 enseignants
-                    (SELECT GROUP_CONCAT(nom ORDER BY total_courses DESC LIMIT 3) 
-                     FROM (
-                         SELECT u.nom, COUNT(c.idCours) AS total_courses
-                         FROM users u
-                         LEFT JOIN cours c ON u.idUser = c.enseignant_id
-                         WHERE u.idRole = 2
-                         GROUP BY u.idUser
-                         ORDER BY total_courses DESC
-                     ) AS top_enseignants
-                    ) AS top_3_enseignants
-            ";
+    SELECT 
+        -- Total enseignants
+        (SELECT COUNT(*) FROM users WHERE idRole = 2) AS total_enseignant,
+        
+        -- Total étudiants
+        (SELECT COUNT(*) FROM users WHERE idRole = 3) AS total_etudiant,
+        
+        -- Total cours
+        (SELECT COUNT(*) FROM cours) AS total_cours,
+        
+        -- Total utilisateurs actifs
+        (SELECT COUNT(*) FROM users WHERE status = 'active') AS total_users_active,
+        
+        -- Courses per category
+        (SELECT STRING_AGG(nom || ' => ' || idCategory, ', ' ORDER BY idCategory ASC) 
+         FROM categories) AS courses_per_category,
+         
+        -- Course with the most students
+        (SELECT titre 
+         FROM cours 
+         WHERE idCours = (
+            SELECT cours_id 
+            FROM inscriptions 
+            GROUP BY cours_id 
+            ORDER BY COUNT(*) DESC 
+            LIMIT 1
+         )
+        ) AS course_with_most_students,
+        
+        -- Top 3 enseignants
+        (SELECT STRING_AGG(nom, ', ') 
+         FROM (
+             SELECT u.nom 
+             FROM users u
+             LEFT JOIN cours c ON u.idUser = c.enseignant_id
+             WHERE u.idRole = 2
+             GROUP BY u.idUser, u.nom
+             ORDER BY COUNT(c.idCours) DESC
+             LIMIT 3
+         ) AS top_enseignants
+        ) AS top_3_enseignants
+";
+
 
             $stmt = $pdo->query($query);
 

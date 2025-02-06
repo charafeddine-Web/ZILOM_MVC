@@ -73,32 +73,32 @@
         </a>
         <ul class="side-menu w-full mt-12">
             <li class="active h-12 bg-transparent ml-2.5 rounded-l-full p-1">
-                <a href="./index.php">
+                <a href="/ZILOM_MVC/public/admin/index">
                     <i class="fa-solid fa-chart-pie"></i> Statistic
                 </a>
             </li>
             <li class="h-12 bg-transparent ml-2.5 rounded-l-full p-1">
-                <a href="listEtudiants.php">
+                <a href="/ZILOM_MVC/public/admin/listetudient">
                     <i class="fa-solid fa-graduation-cap"></i> Étudiants
                 </a>
             </li>
             <li class="h-12 bg-transparent ml-1.5 rounded-l-full p-1">
-                <a href="listEnseignants.php">
+                <a href="/ZILOM_MVC/public/admin/listenseignant">
                     <i class="fa-solid fa-chalkboard-teacher"></i> Enseignants
                 </a>
             </li>
             <li class="h-12 bg-transparent ml-1.5 rounded-l-full p-1">
-                <a href="listCours.php">
+                <a href="/ZILOM_MVC/public/admin/listcourses">
                     <i class="fa-solid fa-book-open"></i> Cours
                 </a>
             </li>
             <li class="h-12 bg-transparent ml-1.5 rounded-l-full p-1">
-                <a href="listCategory.php">
+                <a href="/ZILOM_MVC/public/admin/listcategory">
                     <i class="fa-solid fa-layer-group"></i> Catégories
                 </a>
             </li>
             <li class="h-12 bg-transparent ml-1.5 rounded-l-full p-1">
-                <a href="listTags.php">
+                <a href="/ZILOM_MVC/public/admin/listtags">
                     <i class="fa-solid fa-tags"></i> Tags
                 </a>
             </li>
@@ -107,7 +107,7 @@
 
         <ul class="side-menu w-full mt-12">
             <li class="h-12 bg-transparent ml-2.2 md:ml-2 rounded-l-full p-1">
-                <form action="../logout.php" method="POST">
+                <form action="/ZILOM_MVC/public/logout" method="POST">
                     <button type="submit" name="submit" class="logout flex">
                         <i class='bx bx-log-out-circle'></i> Logout
                     </button>
@@ -248,8 +248,7 @@
                             <tbody>
                                 <?php
                                 try {
-                                    $cours = new Inscription();
-                                    $res = $cours->getAllInscriptions();
+
                                     if ($res) {
                                         foreach ($res as $r) {
                                             echo "<tr class='hover:bg-gray-100'>";

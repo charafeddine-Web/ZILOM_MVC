@@ -13,6 +13,8 @@ use App\Models\Categorie;
 use App\Models\CoursText;
 use App\Models\CoursVideo;
 use App\Models\CoursTags;
+use App\Models\CourseFactory;
+
 use http\Exception;
 
 class CoursController
@@ -39,7 +41,11 @@ class CoursController
             $title = htmlspecialchars($_POST['titre']);
             $description = htmlspecialchars($_POST['description']);
             $type = htmlspecialchars($_POST['type']);
-            $category_id = intval($_POST['categorie']);
+            $category_id = isset($_POST['categorie']) && is_numeric($_POST['categorie']) ? intval($_POST['categorie']) : null;
+            if ($category_id === null) {
+                echo "Erreur: Catégorie invalide.";
+                exit;
+            }
             $enseignant_id = $_SESSION['id_user'];
             $content = '';
             $tags = isset($_POST['tags']) ? $_POST['tags'] : [];
@@ -73,14 +79,11 @@ class CoursController
                 exit;
             }
 
-            if ($type === 'video') {
-                $course = new CoursVideo($title, $description, $category_id, $enseignant_id, $content, $type, $tags);
-            } else {
-                $course = new CoursText($title, $description, $content, $category_id, $enseignant_id, $type, $tags);
-            }
+            $course = CourseFactory::createCourse($type, $title, $description, $category_id, $enseignant_id, $content, $tags);
+
 
             if ($course->addCours()) {
-                header("Location: /ZILOM_MVC/public/enseignant/cours");
+                header("Location: /ZILOM_MVC/public/enseignant/cours/");
                 exit;
             } else {
                 echo "Failed to add course.";
@@ -90,6 +93,18 @@ class CoursController
     }
     public function  Deletecours()
     {
+        if (isset($_GET['idCours'])) {
+            $categoryId = $_GET['idCours'];
+            $category =  Cours::deleteCours(  $categoryId);
+            if ($category) {
+                header('Location: ZILOM_MVC/public/');
+                exit();
+            } else {
+                echo "Error deleting category.";
+            }
+        } else {
+            echo "Categorie ID not provided.";
+        }
 
     }
     public function  Updatecours()

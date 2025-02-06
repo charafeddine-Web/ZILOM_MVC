@@ -26,7 +26,7 @@ class CoursText extends  Cours
             $pdo->beginTransaction();
             // Vérifier si la catégorie existe
 
-            $sql = "SELECT COUNT(*) FROM categories WHERE idcategory = :categorie_id";
+            $sql = "SELECT COUNT(*) FROM categories WHERE idCategory = :categorie_id";
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':categorie_id', $this->categorie_id, PDO::PARAM_INT);
             $stmt->execute();
@@ -35,6 +35,7 @@ class CoursText extends  Cours
             if ($categoryExists == 0) {
                 throw new Exception("Erreur : La catégorie sélectionnée n'existe pas.");
             }
+
 
             $sql = "INSERT INTO cours (titre, description, contenu, categorie_id, enseignant_id, type) 
                     VALUES (:titre, :description, :contenu, :categorie_id, :enseignant_id, :type)";

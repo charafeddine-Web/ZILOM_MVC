@@ -113,13 +113,11 @@ class EnseignantController
               }
           });
       });
-  </script>
-  ';
+  </script>';
             exit;
-
         }
 
-//pour show category
+        //pour show category
         $category=new Categorie(null,null,null,null);
         $categories=$category->showCategories();
 
@@ -128,13 +126,15 @@ class EnseignantController
 
         //pour les cours type video
         $cours = new CoursVideo(null, null, null, $_SESSION['id_user'], null, null,null);
-        $result = $cours->getAllCours();
+        $resultvideo = $cours->getAllCours();
         //pour les cours type Text
         $cours = new CoursText(null, null, null, null, $_SESSION['id_user'], null,null);
-        $result = $cours->getAllCours();
+        $resulttext = $cours->getAllCours();
 
         require_once __DIR__ . '/../../App/Views/enseignant/cours.php';
     }
+
+
     public function  etudiant_ens()
     {
         if(isset($_SESSION['id_user'])){

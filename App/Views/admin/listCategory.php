@@ -1,54 +1,4 @@
-<?php
-require_once '../autoload.php';
-use Classes\Categorie;
 
-
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['addCategory'])) {
-    $categoryName = $_POST['categoryName'];
-    $categoryDescription = $_POST['categoryDescription'];
-    
-    if (isset($_FILES['categoryimage']) && $_FILES['categoryimage']['error'] == 0) {
-        $categoryImage = $_FILES['categoryimage'];
-    } else {
-        echo "Please upload an image.";
-        exit();
-    }
-    
-    if (!empty($categoryName) && !empty($categoryDescription)) {
-        try {
-            $targetDir = 'uploads/categories/';
-            if (!is_dir($targetDir)) {
-                mkdir($targetDir, 0777, true);
-            }
-
-            $imageExtension = pathinfo($categoryImage['name'], PATHINFO_EXTENSION);
-            $imageName = uniqid() . '.' . $imageExtension;
-            $targetFile = $targetDir . $imageName;
-            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
-
-            if (!in_array(strtolower($imageExtension), $allowedExtensions)) {
-                throw new Exception('Invalid image type. Allowed types are: JPG, JPEG, PNG, GIF.');
-            }
-
-            if (!move_uploaded_file($categoryImage['tmp_name'], $targetFile)) {
-                throw new Exception('Failed to upload the image.');
-            }
-            $category = new Categorie(null, $categoryName, $categoryDescription, $targetFile);
-            $category->addCategory();
-            header('Location: listCategory.php');
-            exit();
-        } catch (Exception $e) {
-            echo 'Error adding category: ' . $e->getMessage();
-        }
-    } else {
-        echo 'Please fill in all fields and upload an image.';
-    }
-}
-
-
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -68,44 +18,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['addCategory'])) {
 <body class="">
     <!-- Side Bar -->
     <div class=" fixed top-0 left-0  w-[230px] h-[100%] z-50 overflow-hidden sidebar ">
-    <a href="./index.php" class="logo text-xl font-bold h-[56px] flex items-center text-[#1976D2] z-30 pb-[20px] pl-8 box-content">
+    <a href="/ZILOM_MVC/public/admin/index" class="logo text-xl font-bold h-[56px] flex items-center text-[#1976D2] z-30 pb-[20px] pl-8 box-content">
         <img src="../assets/images/resources/logo-1.png" alt="" />
         </a>
         <ul class="side-menu w-full mt-12">
     <li class=" h-12 bg-transparent ml-2.5 rounded-l-full p-1">
-        <a href="./index.php">
+        <a href="/ZILOM_MVC/public/admin/index">
             <i class="fa-solid fa-chart-pie"></i> Statistic
         </a>
     </li>
     <li class="h-12 bg-transparent ml-2.5 rounded-l-full p-1">
-        <a href="listEtudiants.php">
+        <a href="/ZILOM_MVC/public/admin/listetudient">
             <i class="fa-solid fa-graduation-cap"></i> Étudiants
         </a>
     </li>
     <li class="h-12 bg-transparent ml-1.5 rounded-l-full p-1">
-        <a href="listEnseignants.php">
+        <a href="/ZILOM_MVC/public/admin/listenseignant">
             <i class="fa-solid fa-chalkboard-teacher"></i> Enseignants
         </a>
     </li>
     <li class="h-12 bg-transparent ml-1.5 rounded-l-full p-1">
-        <a href="listCours.php">
+        <a href="/ZILOM_MVC/public/admin/listcourses">
             <i class="fa-solid fa-book-open"></i> Cours
         </a>
     </li>
     <li class="h-12 active bg-transparent ml-1.5 rounded-l-full p-1">
-        <a href="listCategory.php">
+        <a href="/ZILOM_MVC/public/admin/listcategory">
             <i class="fa-solid fa-layer-group"></i> Catégories
         </a>
     </li>
     <li class="h-12 bg-transparent ml-1.5 rounded-l-full p-1">
-        <a href="listTags.php">
+        <a href="/ZILOM_MVC/public/admin/listtags">
             <i class="fa-solid fa-tags"></i> Tags
         </a>
     </li>
 </ul>
         <ul class="side-menu w-full mt-12">
             <li class="h-12 bg-transparent ml-2.2 md:ml-2 rounded-l-full p-1">
-            <form action="../logout.php" method="POST">
+            <form action="/ZILOM_MVC/public/logout" method="POST">
                 <button type="submit" name="submit" class="logout flex">
                     <i class='bx bx-log-out-circle'></i> Logout
                 </button>
@@ -225,25 +175,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['addCategory'])) {
                             <?php
                            
                             try {
-                                $category = Categorie::showCategories();
-                    
+
                                 if ($category) {
                                     foreach ($category as $ct) {
                                         echo "<tr>";
-                                        echo '<td class="border p-2">' . htmlspecialchars($ct['idCategory']) . '</td>';
-                                        echo '<td class="border p-2"><img src="' . htmlspecialchars($ct['imageCategy']) . '" alt="Categorie Image" style="max-width: 100px; height: auto;" /></td>';
+                                        echo '<td class="border p-2">' . htmlspecialchars($ct['idcategory']) . '</td>';
+                                        echo '<td class="border p-2"><img src="../' . htmlspecialchars($ct['imagecategy']) . '" alt="Categorie Image" style="max-width: 100px; height: auto;" /></td>';
                                         echo '<td class="border p-2">' . htmlspecialchars($ct['nom']) . '</td>';
                                         echo '<td class="border p-2">' . htmlspecialchars($ct['description']) . '</td>';
                                         echo '<td class="border p-2 flex items-center justify-between">';
                                         echo '<a href="#" class="buttonedit text-blue-500 hover:text-blue-700" 
-                                        data-id="' . $ct['idCategory'] . '" 
+                                        data-id="' . $ct['idcategory'] . '" 
                                         data-name="' . htmlspecialchars($ct['nom']) . '" 
                                         data-description="' . htmlspecialchars($ct['description']) . '" 
-                                        data-image="' . htmlspecialchars($ct['imageCategy']) . '">
+                                        data-image="' . htmlspecialchars($ct['imagecategy']) . '">
                                         Edit
                                         </a>';
-                                        echo '<a href="crud/delete_category.php?idCategory=' . $ct['idCategory'] . '" class="text-red-500 hover:text-red-700" onclick="return confirm(\'Are you sure you want to delete this category?\')">Delete</a>';
-                                        echo '<a href="javascript:void(0);" class="text-green-500 hover:text-green-700" onclick="showCategoryDetails(' . $ct['idCategory'] . ')">View</a>';
+                                        echo '<a href="/ZILOM_MVC/public/admin/category/Delete?idCategory=' . $ct['idcategory'] . '" class="text-red-500 hover:text-red-700" onclick="return confirm(\'Are you sure you want to delete this category?\')">Delete</a>';
+                                        echo '<a href="javascript:void(0);" class="text-green-500 hover:text-green-700" onclick="showCategoryDetails(' . $ct['idcategory'] . ')">View</a>';
                                         echo '</td>';
                                         echo "</tr>";
                                     }
@@ -265,7 +214,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['addCategory'])) {
 
     <div id="addClientForm"
         class="add-client-form fixed rounded-xl right-[-100%] w-full max-w-[400px] h-[580px] shadow-[2px_0_10px_rgba(0,0,0,0.1)] p-6 flex flex-col gap-5 transition-all duration-700 ease-in-out z-50 top-[166px]">
-        <form action="" method="post" class="flex flex-col gap-4" enctype="multipart/form-data">
+        <form action="/ZILOM_MVC/public/admin/category/add" method="POST" class="flex flex-col gap-4" enctype="multipart/form-data">
         <h2 class="text-2xl font-semibold mb-5">Add Category</h2>
 
         <div class="form-group flex flex-col">

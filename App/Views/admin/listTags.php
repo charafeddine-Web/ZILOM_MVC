@@ -1,29 +1,4 @@
-<?php
-require_once '../autoload.php';
-use Classes\Category;
-use Classes\Tag;
 
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submittags'])) {
-    $tags = explode(',', $_POST['tags']);
-    try {
-        foreach ($tags as $tag) {
-            $tag = trim($tag); 
-            if (!empty($tag)) {
-                $tag = new Tag(null, $tag);
-                $tag->AddTag();
-            }
-        }
-    } catch (\PDOException $e) {
-        echo "Error Adding Tags: " . $e->getMessage();
-    }
-}
-
-$result = Tag::showstatic();
-
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,32 +46,32 @@ $result = Tag::showstatic();
         </a>
         <ul class="side-menu w-full mt-12">
     <li class=" h-12 bg-transparent ml-2.5 rounded-l-full p-1">
-        <a href="index.php">
+        <a href="/ZILOM_MVC/public/admin/index">
             <i class="fa-solid fa-chart-pie"></i> Statistic
         </a>
     </li>
     <li class="h-12 bg-transparent ml-2.5 rounded-l-full p-1">
-        <a href="listEtudiants.php">
+        <a href="/ZILOM_MVC/public/admin/listetudient">
             <i class="fa-solid fa-graduation-cap"></i> Étudiants
         </a>
     </li>
     <li class="h-12  bg-transparent ml-1.5 rounded-l-full p-1">
-        <a href="listEnseignants.php">
+        <a href="/ZILOM_MVC/public/admin/listenseignant">
             <i class="fa-solid fa-chalkboard-teacher"></i> Enseignants
         </a>
     </li>
     <li class="h-12 bg-transparent ml-1.5 rounded-l-full p-1">
-        <a href="listCours.php">
+        <a href="/ZILOM_MVC/public/admin/listcourses">
             <i class="fa-solid fa-book-open"></i> Cours
         </a>
     </li>
     <li class="h-12 bg-transparent ml-1.5 rounded-l-full p-1">
-        <a href="listCategory.php">
+        <a href="/ZILOM_MVC/public/admin/listcategory">
             <i class="fa-solid fa-layer-group"></i> Catégories
         </a>
     </li>
     <li class="h-12 active bg-transparent ml-1.5 rounded-l-full p-1">
-        <a href="listTags.php">
+        <a href="/ZILOM_MVC/public/admin/listtags">
             <i class="fa-solid fa-tags"></i> Tags
         </a>
     </li>
@@ -104,7 +79,7 @@ $result = Tag::showstatic();
 
         <ul class="side-menu w-full mt-12">
             <li class="h-12 bg-transparent ml-2.2 md:ml-2 rounded-l-full p-1">
-            <form action="../logout.php" method="POST">
+            <form action="/ZILOM_MVC/public/logout" method="POST">
                 <button type="submit" name="submit" class="logout flex">
                     <i class='bx bx-log-out-circle'></i> Logout
                 </button>
@@ -215,18 +190,17 @@ $result = Tag::showstatic();
             <tbody>
                 <?php
                 try {
-                    $tags = Tag::GetTags();
 
                     if ($tags) {
                         foreach ($tags as $tg) {
                           
                             echo "<tr class='hover:bg-gray-50 transition-all duration-300'>";
-                            echo '<td class="border p-4 text-sm text-gray-700">' . htmlspecialchars($tg['idTag']) . '</td>';
+                            echo '<td class="border p-4 text-sm text-gray-700">' . htmlspecialchars($tg['idtag']) . '</td>';
                             echo '<td class="border p-4 text-sm text-gray-700">' . htmlspecialchars($tg['nom']) . '</td>';
                             echo '<td class="border p-4 flex space-x-2">';
-                            echo '<a href="./crud/delete_tag.php?idTag=' . $tg['idTag'] . '" class="text-red-600 hover:text-red-800 font-semibold" onclick="return confirm(\'Are you sure you want to delete this Tag?\')">Delete</a>';
+                            echo '<a href="/ZILOM_MVC/public/admin/listtags/delete?idTag=' . $tg['idtag'] . '" class="text-red-600 hover:text-red-800 font-semibold" onclick="return confirm(\'Are you sure you want to delete this Tag?\')">Delete</a>';
                             echo '|';
-                            echo '<a href="javascript:void(0);" class="text-green-600 hover:text-green-800 font-semibold" onclick="showTagDetails(' . $tg['idTag'] . ')">View</a>';
+                            echo '<a href="javascript:void(0);" class="text-green-600 hover:text-green-800 font-semibold" onclick="showTagDetails(' . $tg['idtag'] . ')">View</a>';
                             echo '</td>';
                             echo "</tr>";
                         }
@@ -369,10 +343,10 @@ function removeTag(tag) {
 </script>
     <!-- Edit Car Form -->
     <?php
-    if (isset($_GET['idTag'])) {
-        $idTag = $_GET['idTag'];
+    if (isset($_GET['idtag'])) {
+        $idtag = $_GET['idtag'];
         try {
-            $car = Tag::GetTagById($idTag);
+            $car = Tag::GetTagById($idtag);
 
         } catch (\PDOException $e) {
             echo '<p class="text-red-500">Error fetching vehicle details: ' . $e->getMessage() . '</p>';
