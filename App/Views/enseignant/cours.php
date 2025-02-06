@@ -1,65 +1,4 @@
-<?php
-require_once '../autoload.php';
 
-use Classes\Categorie;
-use Classes\Cours_Video;
-use Classes\Cours_Text;
-use Classes\Enseignant;
-use Classes\Tag;
-
-
-if(isset($_SESSION['id_user'])){
-  $teacherId=$_SESSION['id_user'];
-  $teacherfullname=$_SESSION['fullname'];
-}
-
-$enseignant = new Enseignant($_SESSION['id_user'], null, null, null, null);
-if (!$enseignant->validateStatus()) {
-  echo '
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script>
-      document.addEventListener("DOMContentLoaded", function() {
-          Swal.fire({
-              title: "<span style=\'font-size: 24px; color: #4c6ef5;\'>Account Under Review</span>",
-              html: `
-                  <div style="display: flex; align-items: center; gap: 20px;">
-                      <i class="fas fa-clock" style="font-size: 40px; color: #4c6ef5;"></i>
-                      <p style="font-size: 18px; color: #333333;">Your account is under review. Please wait for approval before accessing this page.</p>
-                  </div>
-              `,
-              icon: "info",
-              background: "#f1f5f9",
-              confirmButtonText: "Go to Homepage",
-              confirmButtonColor: "#4c6ef5",
-              showCloseButton: true,
-              allowOutsideClick: false,
-              customClass: {
-                  popup: "swal-popup-large",
-                  confirmButton: "swal-confirm-btn",
-              },
-              padding: "20px",
-              width: "600px",
-              heightAuto: true,
-          }).then((result) => {
-              if (result.isConfirmed) {
-                  window.location.href = "../index.php"; 
-              }
-          });
-      });
-  </script>
-  ';
-  exit;
-}
-
-//pour show category 
-$category=new Categorie(null,null,null,null);
-$categories=$category->showCategories();
-
-$tag=new Tag(null,null);
-$tags=$tag->GetTags();
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,19 +36,19 @@ $tags=$tag->GetTags();
     <nav class="mt-6">
       <ul class="space-y-2">
         <li>
-          <a href="indexEns.php" class="flex items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+          <a href="/ZILOM_MVC/public/enseignant/indexEns" class="flex items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
             <i class="fas fa-tachometer-alt text-sm"></i>
             <span>Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="etudient.php" class="flex items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+          <a href="/ZILOM_MVC/public/enseignant/etudient" class="flex items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
             <i class="fas fa-users text-sm"></i>
             <span>Étudiants</span>
           </a>
         </li>
         <li>
-          <a href="cours.php" class="flex items-center gap-4 py-2 px-4 rounded-lg bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-md">
+          <a href="/ZILOM_MVC/public/enseignant/cours" class="flex items-center gap-4 py-2 px-4 rounded-lg bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-md">
             <i class="fas fa-book text-sm"></i>
             <span>Cours</span>
           </a>
@@ -118,7 +57,7 @@ $tags=$tag->GetTags();
       </ul>
       <div class="mt-8">
         <p class="text-sm uppercase text-gray-400 mb-4">Auth Pages</p>
-        <form action="../logout.php" method="POST">
+        <form action="/ZILOM_MVC/public/logout" method="POST">
         <button type="submit" name="submit"  class="flex items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
           <i class="fas fa-sign-out-alt text-sm"></i>
           <span>Log Out</span>
@@ -168,7 +107,7 @@ $tags=$tag->GetTags();
       Add New Course
       
     </h2>
-    <form id="addCourseForm" method="POST" action="add_cours.php" enctype="multipart/form-data">
+    <form id="addCourseForm" method="POST" action="/ZILOM_MVC/public/enseignant/cours" enctype="multipart/form-data">
     <input type="hidden" name="enseignant_id" id="enseignant_id" value="<?php echo intval($_SESSION['id_user']); ?>">
     <!-- Title -->
       <div class="mb-4">
@@ -267,8 +206,6 @@ $tags=$tag->GetTags();
         <tbody>
           <?php 
             try {
-              $cours = new Cours_Video(null, null, null, $_SESSION['id_user'], null, null,null);
-              $result = $cours->getAllCours();
               if ($result) {
                 foreach ($result as $ct) {
                   echo "<tr class='hover:bg-gray-100'>";
@@ -318,8 +255,6 @@ $tags=$tag->GetTags();
         <tbody>
           <?php 
             try {
-              $cours = new Cours_Text(null, null, null, null, $_SESSION['id_user'], null,null);
-              $result = $cours->getAllCours();
 
               if ($result) {
                 foreach ($result as $ct) {

@@ -1,6 +1,5 @@
 <?php
 namespace App\Controllers;
-session_start();
 
 require_once __DIR__ . '/../../public/assets/vendors/autoload.php';
 use App\Models\User;
@@ -35,8 +34,8 @@ class AuthController
                     exit();
                 }
                 $_SESSION['user'] = $user;
-                $_SESSION['id_user'] = $user['idUser'];
-                $_SESSION['id_role'] = $user['idRole'];
+                $_SESSION['id_user'] = $user['iduser'];
+                $_SESSION['id_role'] = $user['idrole'];
                 $_SESSION['fullname'] = $user['nom'].' '.$user['prenom'];
                 if ($_SESSION['id_role'] == 2) {
                     header("Location: /ZILOM_MVC/public/enseignant/indexEns");

@@ -33,15 +33,8 @@ class User{
             if (!$pdo) {
                 return "Erreur de connexion à la base de données.";
             }
-            $query = "SELECT 
-            iduser AS idUser, 
-            idrole AS idRole, 
-            nom, 
-            prenom, 
-            status, 
-            password 
-          FROM users 
-          WHERE email = :email";
+            $query = "SELECT idUser, idRole, nom, prenom,status, password FROM users WHERE email = :email";
+
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->execute();

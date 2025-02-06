@@ -40,8 +40,9 @@ $router->add('GET', '/etudient/inscriprion', 'EtudiantController', 'inscriprionc
 
 //Enseignant
 $router->add('GET', '/enseignant/indexEns', 'EnseignantController', 'index');
-$router->add('GET', '/enseignant/cours', 'EnseignantController', 'cours');
-$router->add('GET', '/enseignant/etudient', 'EnseignantController', 'etudient');
+$router->add('GET', '/enseignant/cours', 'EnseignantController', 'cours_ens');
+$router->add('GET', '/enseignant/etudient', 'EnseignantController', 'etudiant_ens');
+$router->add('POST', '/enseignant/cours', 'CoursController', 'Addcours');
 
 
 

@@ -5,7 +5,8 @@ require_once __DIR__ . '/../../public/assets/vendors/autoload.php';
 
 use App\Models\DatabaseConnection;
 use App\Models\Cours;
-
+use Exception;
+use PDO;
 class CoursText extends  Cours
 {
     private $contenu;
@@ -23,6 +24,17 @@ class CoursText extends  Cours
 
             // Begin the transaction
             $pdo->beginTransaction();
+            // Vérifier si la catégorie existe
+
+            $sql = "SELECT COUNT(*) FROM categories WHERE idcategory = :categorie_id";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':categorie_id', $this->categorie_id, PDO::PARAM_INT);
+            $stmt->execute();
+            $categoryExists = $stmt->fetchColumn();
+
+            if ($categoryExists == 0) {
+                throw new Exception("Erreur : La catégorie sélectionnée n'existe pas.");
+            }
 
             $sql = "INSERT INTO cours (titre, description, contenu, categorie_id, enseignant_id, type) 
                     VALUES (:titre, :description, :contenu, :categorie_id, :enseignant_id, :type)";
@@ -34,10 +46,8 @@ class CoursText extends  Cours
             $stmt->bindParam(':categorie_id', $this->categorie_id, \PDO::PARAM_INT);
             $stmt->bindParam(':enseignant_id', $this->enseignant_id);
             $stmt->bindParam(':type', $this->type, \PDO::PARAM_STR);
-
             if ($stmt->execute()) {
                 $coursId = $pdo->lastInsertId();
-
                 if (!empty($this->tags)) {
                     foreach ($this->tags as $tagId) {
                         $sql = "INSERT INTO cours_tags (cours_id, tag_id) VALUES (:cours_id, :tag_id)";
@@ -47,7 +57,6 @@ class CoursText extends  Cours
                         $stmt->execute();
                     }
                 }
-
                 $pdo->commit();
                 return true;
             } else {
