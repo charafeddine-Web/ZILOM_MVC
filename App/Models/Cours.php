@@ -113,7 +113,6 @@ abstract class  Cours
                 LEFT JOIN categories ca ON c.categorie_id = ca.idCategory
                 WHERE c.idCours = :idCours
             ";
-
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':idCours', $idCours, \PDO::PARAM_INT);
             $stmt->execute();

@@ -450,7 +450,7 @@
                     <div class="courses-one__single-content">
                         <h6 class="courses-one__single-content-name"><?= htmlspecialchars($courseItem['fullname']) ?></h6>
                         <h4 class="courses-one__single-content-title">
-                            <a href="course-details.php?id=<?= htmlspecialchars($courseItem['idCours']) ?>">
+                            <a href="course-details.php?id=<?= htmlspecialchars($courseItem['idcours']) ?>">
                                 <?= htmlspecialchars($courseItem['titre']) ?>
                             </a>
                         </h4>

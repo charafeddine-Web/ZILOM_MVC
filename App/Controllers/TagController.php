@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Controllers;
-
 use App\Models\Tag;
 use http\Exception;
 class TagController
 {
-
     public function addtag(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submittags'])) {
             $tags = explode(',', $_POST['tags']);

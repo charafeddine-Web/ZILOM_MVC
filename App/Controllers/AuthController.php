@@ -9,10 +9,29 @@ use App\Models\Ensiegnant;
 
 class AuthController
 {
+    public  function login_token()
+    {
+        session_start();
+
+
+        if (empty($_SESSION['csrf_token'])) {
+            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+        }
+
+        require_once __DIR__ . '/../../App/Views/visiteur/login.php';
+//        require_once __DIR__ . '/../../App/Views/visiteur/register.php';
+
+    }
     public function login()
     {
+
         $success_message = "";
         if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submitlogin'])) {
+
+            if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+                $error_message[] = "Invalid CSRF token";
+            }
+
             $error_message = [];
             $email = trim($_POST['email']);
             $password = trim($_POST['password']);
@@ -53,11 +72,16 @@ class AuthController
                 header('Location: /ZILOM_MVC/public/login');
                 exit();
             }
+            unset($_SESSION['csrf_token']);
         }
     }
     public function register(){
 
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitregister'])) {
+
+            if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+                $error_message[] = "Invalid CSRF token";
+            }
             $error_message = [];
             $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_STRING);
             $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_STRING);

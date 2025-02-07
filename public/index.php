@@ -18,6 +18,7 @@ $router->add('GET', '/register', 'AuthController', 'register_pg');
 $router->add('GET', '/login', 'AuthController', 'login_pg');
 $router->add('POST', '/register', 'AuthController', 'register');
 $router->add('POST', '/login', 'AuthController', 'login');
+//$router->add('GET', '/login', 'AuthController', 'login_token');
 
 //logout
 $router->add('POST', '/logout', 'AuthController', 'logout');
@@ -43,7 +44,7 @@ $router->add('POST', '/etudient/inscriprion', 'EtudiantController', 'inscriprion
 $router->add('GET', '/enseignant/indexEns', 'EnseignantController', 'index');
 $router->add('GET', '/enseignant/cours/', 'EnseignantController', 'cours_ens');
 $router->add('GET', '/enseignant/etudient', 'EnseignantController', 'etudiant_ens');
-
+//Enseignant/Cours
 $router->add('POST', '/enseignant/cours/Add', 'CoursController', 'Addcours');
 $router->add('GET', '/enseignant/cours/Delete', 'CoursController', 'Deletecours');
 
@@ -54,16 +55,16 @@ $router->add('GET', '/admin/listcourses', 'AdminController', 'listcourses');
 $router->add('GET', '/admin/listenseignant', 'AdminController', 'listenseignant');
 $router->add('GET', '/admin/listetudient', 'AdminController', 'listetudient');
 $router->add('GET', '/admin/listtags', 'AdminController', 'listtags');
-
+//admin/user
 $router->add('GET', '/admin/banneruser', 'AdminController', 'banneuser');
 $router->add('GET', '/admin/activieuser', 'AdminController', 'activieuser');
 $router->add('GET', '/admin/refuserenseignant', 'AdminController', 'refuserenseignant');
 $router->add('GET', '/admin/accepterenseignant', 'AdminController', 'accepterenseignant');
-
+//admin/category
 $router->add('POST', '/admin/category/add', 'CategoryController', 'addcategory');
 $router->add('GET', '/admin/category/Delete', 'CategoryController', 'deletecategory');
 $router->add('PUT', '/admin/category/Update', 'CategoryController', 'updatecategory');
-
+//admin/tags
 $router->add('POST', '/admin/listtags/add', 'TagController', 'addtag');
 $router->add('GET', '/admin/listtags/delete', 'TagController', 'deletetag');
 

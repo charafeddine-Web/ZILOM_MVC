@@ -1,9 +1,8 @@
 <?php
 namespace App\Controllers;
 
-//session_start();
 //if (!isset($_SESSION['id_user']) || (isset($_SESSION['id_role']) && $_SESSION['id_role'] !== 1)) {
-//    header("Location: ../public/index.php");
+//    header("Location: /ZILOM_MVC/public/admin/index");
 //    exit;
 //}
 

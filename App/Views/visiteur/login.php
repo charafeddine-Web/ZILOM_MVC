@@ -275,21 +275,26 @@
                                     </div>
                                 <?php endif; ?>
                                 <div class="form-box">
+                                    <form action="/ZILOM_MVC/public/login" method="POST">
+                                        <input type="hidden" name="csrf_token" value="<?php echo isset($_SESSION['csrf_token']) ? $_SESSION['csrf_token'] : ''; ?>">
 
-                                    <form action="/ZILOM_MVC/public/login" method="POST">                                        <div class="form-group">
+                                        <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="email" name="email" placeholder="Your Email" required="">
+                                            <input type="email" name="email" placeholder="Your Email" required>
                                         </div>
+
                                         <div class="form-group">
                                             <label for="password">Password</label>
-                                            <input type="text" name="password" placeholder="********" required="">
+                                            <input type="password" name="password" placeholder="********" required>
                                         </div>
-                                        <button class="registration-one__right-form-btn" type="submit"
-                                            name="submitlogin">
+
+                                        <!-- Submit button -->
+                                        <button class="registration-one__right-form-btn" type="submit" name="submitlogin">
                                             <span class="thm-btn">Sign in now</span>
                                         </button>
                                     </form>
                                 </div>
+
                             </div>
                         </div>
                     </div>
