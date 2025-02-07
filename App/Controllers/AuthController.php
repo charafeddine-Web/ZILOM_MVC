@@ -9,72 +9,82 @@ use App\Models\Ensiegnant;
 
 class AuthController
 {
-    public  function login_token()
-    {
-        session_start();
+//    public function login_token()
+//    {
+//        if (session_status() == PHP_SESSION_NONE) {
+//            session_start();
+//        }
+//        if (!isset($_SESSION['csrf_token'])) {
+//            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+//        }
+//
+//        $t = $_SESSION['csrf_token'];
+//        require_once __DIR__ . '/../../App/Views/visiteur/login.php';
+//    }
 
-
-        if (empty($_SESSION['csrf_token'])) {
-            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-        }
-
-        require_once __DIR__ . '/../../App/Views/visiteur/login.php';
-//        require_once __DIR__ . '/../../App/Views/visiteur/register.php';
-
-    }
     public function login()
     {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
 
-        $success_message = "";
         if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submitlogin'])) {
-
-            if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-                $error_message[] = "Invalid CSRF token";
-            }
-
-            $error_message = [];
-            $email = trim($_POST['email']);
-            $password = trim($_POST['password']);
-            if (empty($email) || empty($password)) {
-                $error_message[] = "Veuillez remplir tous les champs.";
-            }
-            if (!empty($error_message)) {
-                $_SESSION['error_message'] = $error_message;
+            if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== ($_SESSION['csrf_token'] ?? '')) {
+                $_SESSION['error_message'] = ["Invalid CSRF token."];
                 header('Location: /ZILOM_MVC/public/login');
                 exit();
             }
+
+            $email = trim($_POST['email']);
+            $password = trim($_POST['password']);
+
+            if (empty($email) || empty($password)) {
+                $_SESSION['error_message'] = ["Veuillez remplir tous les champs."];
+                header('Location: /ZILOM_MVC/public/login');
+                exit();
+            }
+
             $user = User::login($email, $password);
-            var_dump($user);
+
             if (is_array($user)) {
                 if ($user['status'] === 'suspended') {
-                    $error_message[] = "Votre compte est suspendu. Veuillez contacter l'administrateur.";
-                    $_SESSION['error_message'] = $error_message;
+                    $_SESSION['error_message'] = ["Votre compte est suspendu. Veuillez contacter l'administrateur."];
                     header('Location: /ZILOM_MVC/public/login');
                     exit();
                 }
+
                 $_SESSION['user'] = $user;
                 $_SESSION['id_user'] = $user['iduser'];
                 $_SESSION['id_role'] = $user['idrole'];
                 $_SESSION['fullname'] = $user['nom'].' '.$user['prenom'];
-                if ($_SESSION['id_role'] == 2) {
-                    header("Location: /ZILOM_MVC/public/enseignant/indexEns");
-                    exit();
-                } elseif($_SESSION['id_role'] == 3) {
-                    header("Location: /ZILOM_MVC/public/etudient/indexEtu");
-                    exit();
-                }elseif($_SESSION['id_role'] == 1) {
-                    header("Location: /ZILOM_MVC/public/admin/index");
-                    exit();
+
+                // REDIRECT BASED ON ROLE
+                switch ($_SESSION['id_role']) {
+                    case 2:
+                        header("Location: /ZILOM_MVC/public/enseignant/indexEns");
+                        break;
+                    case 3:
+                        header("Location: /ZILOM_MVC/public/etudient/indexEtu");
+                        break;
+                    case 1:
+                        header("Location: /ZILOM_MVC/public/admin/index");
+                        break;
+                    default:
+                        header('Location: /ZILOM_MVC/public/login');
+                        break;
                 }
+                exit();
             } else {
-                $error_message[] = $user;
-                $_SESSION['error_message'] = $error_message;
+                $_SESSION['error_message'] = ["Email ou mot de passe incorrect."];
                 header('Location: /ZILOM_MVC/public/login');
                 exit();
             }
+
+            // Unset CSRF token after successful login
             unset($_SESSION['csrf_token']);
         }
     }
+
     public function register(){
 
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitregister'])) {
@@ -133,11 +143,20 @@ class AuthController
                 header('Location: /ZILOM_MVC/public/register');
                 exit();
             }
+            unset($_SESSION['csrf_token']);
+
         }
     }
 
     public function register_pg()
     {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        if (!isset($_SESSION['csrf_token'])) {
+            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+        }
+
         $error_message = isset($_SESSION['error_message']) ? $_SESSION['error_message'] : [];
         $success_message = isset($_SESSION['success_message']) ? $_SESSION['success_message'] : [];
         unset($_SESSION['error_message']);
@@ -146,6 +165,13 @@ class AuthController
         require_once __DIR__ . '/../../App/Views/visiteur/register.php';
     }
     public function login_pg(){
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        if (!isset($_SESSION['csrf_token'])) {
+            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+        }
+
         $error_message = isset($_SESSION['error_message']) ? $_SESSION['error_message'] : [];
         $success_message = isset($_SESSION['success_message']) ? $_SESSION['success_message'] : [];
         unset($_SESSION['error_message']);
@@ -158,6 +184,7 @@ class AuthController
     }
 
     public function logout(){
+
         if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit'])) {
             error_log("Logout triggered");
             User::logout();

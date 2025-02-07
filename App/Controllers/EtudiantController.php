@@ -15,8 +15,20 @@ use App\Models\Inscription;
 
 class EtudiantController
 {
+    private function checkEtudiantSession()
+    {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        if (!isset($_SESSION['id_user']) || $_SESSION['id_role'] !== 3) {
+            header("Location: /ZILOM_MVC/public/login");
+            exit;
+        }
+    }
     public function index_etudiant()
     {
+        $this ->checkEtudiantSession();
+
         $searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
         $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
         $limit = 8;
@@ -37,6 +49,8 @@ class EtudiantController
     }
 
     public function mecours(){
+        $this ->checkEtudiantSession();
+
         if (isset($_SESSION['id_user'])){
             $etudient=$_SESSION['id_user'];
         };
@@ -45,6 +59,8 @@ class EtudiantController
         require_once __DIR__ . '/../Views/etudiant/mecours.php';
     }
     public function cours_details(){
+        $this ->checkEtudiantSession();
+
         if (isset($_SESSION['id_user'])) {
             $etudient = $_SESSION['id_user'];
         }
@@ -65,9 +81,11 @@ class EtudiantController
         $inscription = new Inscription();
         $isEnrolled = $inscription->checkEnrollment($etudient, $courseId);
         require_once __DIR__ . '/../../App/Views/etudiant/course-details.php';
-
     }
+
     public function inscriprion(){
+        $this ->checkEtudiantSession();
+
         header('Content-Type: application/json');
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $coursId = $_POST['cours_id'] ?? null;
