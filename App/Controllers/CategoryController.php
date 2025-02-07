@@ -11,8 +11,9 @@ class CategoryController
 
     public function addcategory(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['addCategory'])) {
-            $categoryName = $_POST['categoryName'];
-            $categoryDescription = $_POST['categoryDescription'];
+
+            $categoryName = trim(htmlspecialchars($_POST['categoryName'], ENT_QUOTES, 'UTF-8'));
+            $categoryDescription = trim(htmlspecialchars($_POST['categoryDescription'], ENT_QUOTES, 'UTF-8'));
 
             if (isset($_FILES['categoryimage']) && $_FILES['categoryimage']['error'] == 0) {
                 $categoryImage = $_FILES['categoryimage'];

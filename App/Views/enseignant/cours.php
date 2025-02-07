@@ -176,7 +176,7 @@
     <select name="tags[]" id="tags" class="p-2 rounded bg-slate-100" multiple>
         <?php
         foreach ($tags as $tag) {
-            echo "<option value='{$tag['idTag']}'>{$tag['nom']}</option>";
+            echo "<option value='{$tag['idtag']}'>{$tag['nom']}</option>";
         }
         ?>
     </select>

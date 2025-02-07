@@ -2,10 +2,7 @@
 namespace App\Controllers;
 
 session_start();
-//if (!isset($_SESSION['id_user']) || (isset($_SESSION['id_role']) && $_SESSION['id_role'] !== 2)) {
-//    header("Location: /ZILOM_MVC/public/");
-//    exit;
-//}
+
 
 require_once __DIR__ . '/../../public/assets/vendors/autoload.php';
 

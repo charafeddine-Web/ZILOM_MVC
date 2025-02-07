@@ -9,18 +9,7 @@ use App\Models\Ensiegnant;
 
 class AuthController
 {
-//    public function login_token()
-//    {
-//        if (session_status() == PHP_SESSION_NONE) {
-//            session_start();
-//        }
-//        if (!isset($_SESSION['csrf_token'])) {
-//            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-//        }
-//
-//        $t = $_SESSION['csrf_token'];
-//        require_once __DIR__ . '/../../App/Views/visiteur/login.php';
-//    }
+
 
     public function login()
     {
@@ -35,8 +24,8 @@ class AuthController
                 exit();
             }
 
-            $email = trim($_POST['email']);
-            $password = trim($_POST['password']);
+            $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
+            $password = trim(htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8'));
 
             if (empty($email) || empty($password)) {
                 $_SESSION['error_message'] = ["Veuillez remplir tous les champs."];
@@ -96,8 +85,9 @@ class AuthController
             $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_STRING);
             $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_STRING);
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-            $password = $_POST['password'];
+            $password = trim(htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8'));
             $role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_STRING);
+
             if (empty($nom) || empty($prenom) || empty($email) || empty($password) || empty($role)) {
                 $error_message[] = "All fields are required.";
             }
@@ -143,6 +133,7 @@ class AuthController
                 header('Location: /ZILOM_MVC/public/register');
                 exit();
             }
+
             unset($_SESSION['csrf_token']);
 
         }
@@ -184,7 +175,6 @@ class AuthController
     }
 
     public function logout(){
-
         if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submit'])) {
             error_log("Logout triggered");
             User::logout();
