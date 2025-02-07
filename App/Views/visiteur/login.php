@@ -217,9 +217,7 @@
                     </div>
                 </div>
             </div>
-
         </header>
-
 
         <div class="stricky-header stricked-menu main-menu">
             <div class="sticky-header__content">
@@ -257,7 +255,6 @@
             </div>
         </div>
     </div>
-                    
 
                     <!--Start Login One Right-->
                     <div class="col-xl-5 col-lg-5">
@@ -276,18 +273,15 @@
                                 <?php endif; ?>
                                 <div class="form-box">
                                     <form action="/ZILOM_MVC/public/login" method="POST">
-                                        <input type="hidden" name="csrf_token" value="<?php echo isset($_SESSION['csrf_token']) ? $_SESSION['csrf_token'] : ''; ?>">
-
+                                        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                                         <div class="form-group">
                                             <label for="email">Email</label>
                                             <input type="email" name="email" placeholder="Your Email" required>
                                         </div>
-
                                         <div class="form-group">
                                             <label for="password">Password</label>
                                             <input type="password" name="password" placeholder="********" required>
                                         </div>
-
                                         <!-- Submit button -->
                                         <button class="registration-one__right-form-btn" type="submit" name="submitlogin">
                                             <span class="thm-btn">Sign in now</span>

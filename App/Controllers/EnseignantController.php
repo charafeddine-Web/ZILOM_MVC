@@ -20,8 +20,19 @@ use App\Models\Tag;
 
 class EnseignantController
 {
+    private function checkEtudiantSession()
+    {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        if (!isset($_SESSION['id_user']) || $_SESSION['id_role'] !== 2) {
+            header("Location: /ZILOM_MVC/public/login");
+            exit;
+        }
+    }
     public function index()
     {
+        $this->checkEtudiantSession();
 
         if(isset($_SESSION['id_user'])){
             $teacherId=$_SESSION['id_user'];
@@ -76,6 +87,8 @@ class EnseignantController
 
     public function  cours_ens()
     {
+        $this->checkEtudiantSession();
+
         if(isset($_SESSION['id_user'])){
             $teacherId=$_SESSION['id_user'];
             $teacherfullname=$_SESSION['fullname'];
@@ -137,6 +150,8 @@ class EnseignantController
 
     public function  etudiant_ens()
     {
+        $this->checkEtudiantSession();
+
         if(isset($_SESSION['id_user'])){
             $teacherId=$_SESSION['id_user'];
             $teacherfullname=$_SESSION['fullname'];

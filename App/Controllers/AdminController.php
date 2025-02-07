@@ -21,8 +21,19 @@ use Exception;
 
 class AdminController
 {
+    private function checkEtudiantSession()
+    {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        if (!isset($_SESSION['id_user']) || $_SESSION['id_role'] !== 1) {
+            header("Location: /ZILOM_MVC/public/login");
+            exit;
+        }
+    }
     public function index()
     {
+        $this->checkEtudiantSession();
         try {
             $result = Admin::ViewStatistic();
             $cours = new Inscription();
@@ -33,6 +44,7 @@ class AdminController
         require_once __DIR__ . '/../Views/admin/index.php';
     }
     public function listetudient(){
+        $this->checkEtudiantSession();
 
         try {
 
@@ -49,6 +61,7 @@ class AdminController
 
     }
     public function listenseignant(){
+        $this->checkEtudiantSession();
 
         try {
             $resultadmin =  Admin::ViewStatistic();
@@ -64,6 +77,8 @@ class AdminController
         require_once __DIR__ . '/../Views/admin/listEnseignants.php';
     }
     public function listcourses(){
+        $this->checkEtudiantSession();
+
         $resultd =  Admin::ViewStatistic();
         $result =  Cours::ViewStatisticcours();
         $cours = Cours::ShowallCours();
@@ -71,11 +86,15 @@ class AdminController
         require_once __DIR__ . '/../Views/admin/listCours.php';
     }
     public function listcategory(){
+        $this->checkEtudiantSession();
+
         $category = Categorie::showCategories();
         require_once __DIR__ . '/../Views/admin/listCategory.php';
 
     }
     public function listtags(){
+        $this->checkEtudiantSession();
+
         $result = Tag::showstatic();
         $tags = Tag::GetTags();
         require_once __DIR__ . '/../Views/admin/listTags.php';
@@ -83,6 +102,8 @@ class AdminController
 
     public  function banneuser  ()
     {
+        $this->checkEtudiantSession();
+
         try {
             $idUser = $_GET['idUser'] ?? null;
             $idRole = $_GET['idRole'] ?? null;
@@ -107,6 +128,8 @@ class AdminController
     }
 
     public function activieuser(){
+        $this->checkEtudiantSession();
+
         try {
             $idUser = $_GET['idUser'] ?? null;
             $idRole = $_GET['idRole'] ?? null;
@@ -131,6 +154,8 @@ class AdminController
 
     public  function accepterenseignant()
     {
+        $this->checkEtudiantSession();
+
         try {
             $idUser = $_GET['idUser'] ?? null;
             $idRole = $_GET['idRole'] ?? null;
@@ -155,6 +180,8 @@ class AdminController
 
     public function refuserenseignant()
     {
+        $this->checkEtudiantSession();
+
         try {
             $idUser = $_GET['idUser'] ?? null;
             $idRole = $_GET['idRole'] ?? null;

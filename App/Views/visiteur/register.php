@@ -276,6 +276,7 @@
                                     </div>
                                 <?php endif; ?>
                                     <form method="POST" action="/ZILOM_MVC/public/register">
+                                        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                                         <div class="form-group">
                                             <input type="text" name="nom" placeholder=" First Name" required="">
                                         </div>
