@@ -112,11 +112,7 @@
                     </div>
                 </div>
 
-                <div class="relative">
-                    <input type="text" placeholder="Search courses..."
-                        class="py-2 md:px-4 rounded-full border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-300">
-                    <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
-                </div>
+
             </div>
         </div>
     </nav>
@@ -179,7 +175,7 @@
                         </div>
                         <h6 class="courses-one__single-content-name"><?= htmlspecialchars($course['fullname']) ?></h6>
                         <h4 class="courses-one__single-content-title">
-                            <a href="course-details.php?id=<?= htmlspecialchars($course['idCours']) ?>">
+                            <a href="/ZILOM_MVC/public/etudient/cours-details?id=<?= htmlspecialchars($course['idcours']) ?>">
                                 <?= htmlspecialchars($course['titre']) ?>
                             </a>
                         </h4>

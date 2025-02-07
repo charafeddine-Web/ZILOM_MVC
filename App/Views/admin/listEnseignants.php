@@ -193,10 +193,10 @@
 
                             
                             echo '<td class="border p-4 text-center flex justify-center items-center space-x-2">';
-                            echo '<a href="crud/refuser_enseig.php?idUser=' . $r['iduser'] . '&idRole=' . $r['idrole'] . '" 
+                            echo '<a href="/ZILOM_MVC/public/admin/refuserenseignant?idUser=' . $r['iduser'] . '&idRole=' . $r['idrole'] . '" 
                                 class="bg-red-100 text-red-500 hover:bg-red-200 p-2 rounded-full transition-all duration-300" title="Ban User">
                                 <i class="fas fa-ban"></i></a>';
-                            echo '<a href="crud/accepter_ensgienant.php?idUser=' . $r['iduser'] . '&idRole=' . $r['idrole'] . '" 
+                            echo '<a href="/ZILOM_MVC/public/admin/accepterenseignant?idUser=' . $r['iduser'] . '&idRole=' . $r['idrole'] . '" 
                                 class="bg-green-100 text-green-500 hover:bg-green-200 p-2 rounded-full transition-all duration-300" title="Activate User">
                                 <i class="fas fa-check"></i></a>';
                             echo '</td>';

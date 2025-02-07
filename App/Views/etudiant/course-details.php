@@ -114,11 +114,7 @@
 
                 </div>
 
-                <div class="relative">
-                    <input type="text" placeholder="Search courses..."
-                        class="py-2 md:px-4 rounded-full border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-300">
-                    <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
-                </div>
+
             </div>
         </div>
     </nav>

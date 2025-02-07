@@ -82,5 +82,99 @@ class AdminController
         require_once __DIR__ . '/../Views/admin/listTags.php';
     }
 
+    public  function banneuser  ()
+    {
+        try {
+            $idUser = $_GET['idUser'] ?? null;
+            $idRole = $_GET['idRole'] ?? null;
+
+            if (!$idUser || !$idRole) {
+                throw new Exception("User ID and Role ID are required.");
+            }
+
+            if( $idRole == 3){
+                $userInstance = new Admin($idUser, null, null, null, null,null);
+                $userInstance->bannerUser();
+                header('Location: /ZILOM_MVC/public/admin/listetudient');
+                exit;
+            }
+
+        } catch (\PDOException $e) {
+            echo "Database Error: " . $e->getMessage();
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+
+    }
+
+    public function activieuser(){
+        try {
+            $idUser = $_GET['idUser'] ?? null;
+            $idRole = $_GET['idRole'] ?? null;
+
+            if (!$idUser || !$idRole) {
+                throw new Exception("User ID and Role ID are required.");
+            }
+            if( $idRole == 3){
+                $userInstance = new Admin($idUser, null, null, null, null,null);
+                $userInstance->ActivieUser();
+                header('Location: /ZILOM_MVC/public/admin/listetudient');
+                exit;
+            }
+
+        } catch (\PDOException $e) {
+            echo "Database Error: " . $e->getMessage();
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+
+    }
+
+    public  function accepterenseignant()
+    {
+        try {
+            $idUser = $_GET['idUser'] ?? null;
+            $idRole = $_GET['idRole'] ?? null;
+
+            if (!$idUser || !$idRole) {
+                throw new Exception("User ID and Role ID are required.");
+            }
+            if( $idRole == 2){
+                $userInstance = new Admin(null, null, null, null, null,null);
+                $userInstance->accepterEnseig($idUser);
+                header('Location: /ZILOM_MVC/public/admin/listenseignant');
+                exit;
+            }
+
+        } catch (\PDOException $e) {
+            echo "Database Error: " . $e->getMessage();
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+
+    }
+
+    public function refuserenseignant()
+    {
+        try {
+            $idUser = $_GET['idUser'] ?? null;
+            $idRole = $_GET['idRole'] ?? null;
+
+            if( $idRole == 2){
+                $userInstance = new Admin(null, null, null, null, null,null);
+                $userInstance->refuserEnseig($idUser);
+                header('Location: /ZILOM_MVC/public/admin/listenseignant');
+                exit;
+            }
+
+        } catch (\PDOException $e) {
+            echo "Database Error: " . $e->getMessage();
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+
+    }
+
+
 
 }

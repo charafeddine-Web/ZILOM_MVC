@@ -13,7 +13,7 @@ class Admin extends User{
         (SELECT COUNT(*) FROM users WHERE idRole = 2) AS total_enseignant,
         
         -- Total étudiants
-        (SELECT COUNT(*) FROM users WHERE idRole = 3) AS total_etudiant,
+        (SELECT COUNT(*) FROM users WHERE idRole = 3) AS total_etudient,
         
         -- Total cours
         (SELECT COUNT(*) FROM cours) AS total_cours,

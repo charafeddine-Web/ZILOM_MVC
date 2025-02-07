@@ -34,7 +34,6 @@
     <link rel="stylesheet" href="../assets/vendors/owl-carousel/owl.carousel.min.css" />
     <link rel="stylesheet" href="../assets/vendors/owl-carousel/owl.theme.default.min.css" />
     <link rel="stylesheet" href="../assets/vendors/twentytwenty/twentytwenty.css" />
-
     <!-- template styles -->
     <link rel="stylesheet" href="../assets/css/zilom.css" />
     <link rel="stylesheet" href="../assets/css/zilom-responsive.css" />
@@ -44,7 +43,6 @@
             justify-content: center;
             margin-top: 20px;
         }
-
         .pagination a {
             padding: 10px 15px;
             margin: 0 5px;
@@ -53,29 +51,26 @@
             border-radius: 5px;
             color: #333;
         }
-
         .pagination a.active {
             background-color: indigo;
             color: white;
         }
-
         .pagination a:hover {
             background-color: #ddd;
         }
     </style>
 </head>
-
 <body class="bg-gray-100 font-sans">
     <nav class="bg-indigo-600 shadow-lg fixed w-full top-0 left-0 z-50">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-2">
-                <a href="index.php"><img src="../assets/images/resources/logo-2.png" alt="" /></a>
+                <a href="/ZILOM_MVC/public/etudient/indexEtu"><img src="../assets/images/resources/logo-2.png" alt="" /></a>
 
                 <button id="hamburger" class="lg:hidden text-white">
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="hidden lg:flex space-x-6">
-                    <a href="indexEtu.php" class="text-white flex items-center hover:text-gray-200">
+                    <a href="/ZILOM_MVC/public/etudient/indexEtu" class="text-white flex items-center hover:text-gray-200">
                         <i class="fas fa-book mr-2"></i>All Courses
                     </a>
                     <a href="/ZILOM_MVC/public/etudient/mecours" class="text-white flex items-center hover:text-gray-200">
@@ -109,7 +104,7 @@
                 </div>
 
                 <div class="relative">
-                    <form action="indexEtu.php" method="GET" class="relative mb-6">
+                    <form action="/ZILOM_MVC/public/etudient/indexEtu" method="GET" class="relative mb-6">
                         <input type="text" name="search" id="search"
                             value="<?php echo htmlspecialchars($searchQuery); ?>" placeholder="Search courses..."
                             class="py-2 md:px-4 rounded-full border border-gray-300 focus:outline-none focus:ring focus:ring-indigo-300 w-full">
@@ -174,7 +169,7 @@
                             <?php
                             if ($categories && count($categories) > 0) {
                                 foreach ($categories as $category) {
-                                    echo '<li data-category="' . htmlspecialchars($category['idCategory']) . '">
+                                    echo '<li data-category="' . htmlspecialchars($category['idcategory']) . '">
                                         <span class="filter-text">' . htmlspecialchars($category['nom']) . '</span>
                                     </li>';
                                 }
@@ -192,11 +187,11 @@
             <?php
             if ($categories && count($categories) > 0) {
                 foreach ($categories as $category) {
-                    echo '<div class="category-section category-' . htmlspecialchars($category['idCategory']) . '">';
+                    echo '<div class="category-section category-' . htmlspecialchars($category['idcategory']) . '">';
                     echo '<h3 class="text-indigo-600 text-xl font-semibold mt-6 mb-4">' . htmlspecialchars($category['nom']) . '</h3>';
-                    if (isset($coursesByCategory[$category['idCategory']]) && count($coursesByCategory[$category['idCategory']]) > 0) {
+                    if (isset($coursesByCategory[$category['idcategory']]) && count($coursesByCategory[$category['idcategory']]) > 0) {
                         echo '<div class="row">';
-                        foreach ($coursesByCategory[$category['idCategory']] as $courseItem) {
+                        foreach ($coursesByCategory[$category['idcategory']] as $courseItem) {
                             $imageSrc = ($courseItem['type'] === 'text')
                                 ? '../assets/images/backgrounds/text.webp'
                                 : '../assets/images/backgrounds/video.webp';
@@ -214,7 +209,7 @@
                                             <?= htmlspecialchars($courseItem['fullname']) ?>
                                         </h6>
                                         <h4 class="courses-one__single-content-title">
-                                            <a href="course-details.php?id=<?= htmlspecialchars($courseItem['idCours']) ?>">
+                                            <a href="/ZILOM_MVC/public/etudient/cours-details?id=<?= htmlspecialchars($courseItem['idcours']) ?>">
                                                 <?= htmlspecialchars($courseItem['titre']) ?>
                                             </a>
                                         </h4>
@@ -223,10 +218,10 @@
                                         <div class="courses-one__single-content-price">$<?= htmlspecialchars(rand(50, 5000)) ?>.00
                                         </div>
                                         <!-- Form for enrolling -->
-                                        <form action="inscription.php" method="POST" onsubmit="return handleFormSubmit(event)">
+                                        <form action="/ZILOM_MVC/public/etudient/inscriprion" method="POST" onsubmit="return handleFormSubmit(event)">
                                             <input type="hidden" name="etudiant_id" value="<?= $_SESSION['id_user']; ?>">
                                             <input type="hidden" name="cours_id"
-                                                value="<?= htmlspecialchars($courseItem['idCours']) ?>">
+                                                value="<?= htmlspecialchars($courseItem['idcours']) ?>">
                                             <button type="submit"
                                                 class="bg-indigo-600 text-white px-4 py-2 rounded mt-2 hover:bg-indigo-700"
                                                 id="enroll-btn">

@@ -549,7 +549,7 @@
                         </div>
                         <h6 class="courses-one__single-content-name"><?= htmlspecialchars($course['fullname']) ?></h6>
                         <h4 class="courses-one__single-content-title">
-                        <a href="./visiteur/course-details.php?id=<?= htmlspecialchars($course['idCours']) ?>">
+                        <a href="/ZILOM_MVC/public/visiteur/cours_details?=<?= htmlspecialchars($course['idcours']) ?>">
                                 <?= htmlspecialchars($course['titre']) ?>
                             </a>
                         </h4>

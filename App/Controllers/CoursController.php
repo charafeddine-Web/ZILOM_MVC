@@ -78,10 +78,7 @@ class CoursController
                 echo "Error: Content is empty. Upload process failed.<br>";
                 exit;
             }
-
             $course = CourseFactory::createCourse($type, $title, $description, $category_id, $enseignant_id, $content, $tags);
-
-
             if ($course->addCours()) {
                 header("Location: /ZILOM_MVC/public/enseignant/cours/");
                 exit;

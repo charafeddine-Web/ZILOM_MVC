@@ -45,34 +45,30 @@ class EtudiantController
         require_once __DIR__ . '/../Views/etudiant/mecours.php';
     }
     public function cours_details(){
-
         if (isset($_SESSION['id_user'])) {
             $etudient = $_SESSION['id_user'];
         }
-        ;
         $courseId = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
         if ($courseId <= 0) {
             echo "Invalid course ID.";
             exit;
         }
-
         $course = Cours::getCoursById($courseId);
-
         if (!$course) {
             echo "Course not found.";
             exit;
         }
         $instructorName = htmlspecialchars($course['enseignant_nom']);
         $categoryName = htmlspecialchars($course['categorie_nom']);
-// pour teset si etudient inscrire sur une cours or no
+        // pour teset si etudient inscrire sur une cours or no
         $inscription = new Inscription();
-        $isEnrolled = $inscription->checkEnrollment($etudient, $courseId); //
+        $isEnrolled = $inscription->checkEnrollment($etudient, $courseId);
+        require_once __DIR__ . '/../../App/Views/etudiant/course-details.php';
+
     }
     public function inscriprion(){
-
         header('Content-Type: application/json');
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $coursId = $_POST['cours_id'] ?? null;
             $etudiantId = $_POST['etudiant_id'] ?? null;
@@ -80,7 +76,6 @@ class EtudiantController
             if ($coursId && $etudiantId) {
                 $inscription = new Inscription();
                 $message = $inscription->inscrireEtudiant($coursId, $etudiantId);
-
                 if ($message === "Inscription réussie!") {
                     echo json_encode(['success' => true, 'message' => $message]);
                 } else {

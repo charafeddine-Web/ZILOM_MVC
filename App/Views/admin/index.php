@@ -216,7 +216,7 @@
         </div>
         <span class="info">
             <h3 class="text-lg font-semibold">
-                <?php echo isset($result['total_users_activie']) ? $result['total_users_activie'] : "No data available."; ?>
+                <?php echo isset($result['total_users_active']) ? $result['total_users_active'] : "No data available."; ?>
             </h3>
             <p>Total Utilisateurs Actifs</p>
         </span>
@@ -252,7 +252,7 @@
                                     if ($res) {
                                         foreach ($res as $r) {
                                             echo "<tr class='hover:bg-gray-100'>";
-                                            echo '<td class="px-4 py-2 border-b">' . htmlspecialchars($r['idInscription']) . '</td>';
+                                            echo '<td class="px-4 py-2 border-b">' . htmlspecialchars($r['idinscription']) . '</td>';
                                             echo '<td class="px-4 py-2 border-b">' . htmlspecialchars($r['course_title']) . '</td>';
                                             echo '<td class="px-4 py-2 border-b">' . htmlspecialchars(substr($r['course_description'], 0, 10)) . '...</td>';
                                             echo '<td class="px-4 py-2 border-b">' . htmlspecialchars($r['teacher_name']) . ' ' . htmlspecialchars($r['teacher_surname']) . '</td>';

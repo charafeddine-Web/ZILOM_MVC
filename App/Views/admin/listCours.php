@@ -197,7 +197,7 @@
                             $availabilityColor = $cr['type'] === 'text' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
                             $availabilityText = ucfirst($cr['type']);
                             echo "<tr class='hover:bg-gray-50 transition-all duration-300'>";
-                            echo '<td class="border p-4 text-sm text-gray-700">' . htmlspecialchars($cr['idCours']) . '</td>';
+                            echo '<td class="border p-4 text-sm text-gray-700">' . htmlspecialchars($cr['idcours']) . '</td>';
                             echo '<td class="border p-4 text-sm text-gray-700">' . htmlspecialchars($cr['titre']) . '</td>';
                             echo '<td class="border p-4 text-sm text-gray-700">' . htmlspecialchars(substr($cr['description'], 0, 15)) . '...</td>';
                             echo '<td class="border p-4"><span class="' . $availabilityColor . ' px-2 py-1 rounded-full text-center">' . $availabilityText . '</span></td>';
@@ -205,7 +205,7 @@
                             echo '<td class="border p-4 text-sm text-gray-700">' . htmlspecialchars($cr['fullname']) . '</td>';
                             echo '<td class="border p-4 text-sm text-gray-700">' . htmlspecialchars($cr['date_creation']) . '</td>';
                             echo '<td class="border p-4 flex space-x-2">';
-                            echo '<a href="javascript:void(0);" class="text-green-600 hover:text-green-800 font-semibold" onclick="showVehicleDetails(' . $cr['idCours'] . ')">View</a>';
+                            echo '<a href="javascript:void(0);" class="text-green-600 hover:text-green-800 font-semibold" onclick="showVehicleDetails(' . $cr['idcours'] . ')">View</a>';
                             echo '</td>';
                             echo "</tr>";
                         }
