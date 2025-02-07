@@ -76,9 +76,8 @@ class Categorie
     {
         try {
             $pdo = DatabaseConnection::getInstance();
-            $sql = "SELECT *FROM categories";
+            $sql = "SELECT idCategory,nom,description,imageCategy FROM categories";
             $stmt = $pdo->prepare($sql);
-
             $stmt->execute();
 
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);

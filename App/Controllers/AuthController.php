@@ -1,6 +1,6 @@
 <?php
-
 namespace App\Controllers;
+
 require_once __DIR__ . '/../../public/assets/vendors/autoload.php';
 use App\Models\User;
 use App\Models\Etudiant;
@@ -9,10 +9,29 @@ use App\Models\Ensiegnant;
 
 class AuthController
 {
+    public  function login_token()
+    {
+        session_start();
+
+
+        if (empty($_SESSION['csrf_token'])) {
+            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+        }
+
+        require_once __DIR__ . '/../../App/Views/visiteur/login.php';
+//        require_once __DIR__ . '/../../App/Views/visiteur/register.php';
+
+    }
     public function login()
     {
+
         $success_message = "";
         if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['submitlogin'])) {
+
+            if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+                $error_message[] = "Invalid CSRF token";
+            }
+
             $error_message = [];
             $email = trim($_POST['email']);
             $password = trim($_POST['password']);
@@ -25,6 +44,7 @@ class AuthController
                 exit();
             }
             $user = User::login($email, $password);
+            var_dump($user);
             if (is_array($user)) {
                 if ($user['status'] === 'suspended') {
                     $error_message[] = "Votre compte est suspendu. Veuillez contacter l'administrateur.";
@@ -33,8 +53,8 @@ class AuthController
                     exit();
                 }
                 $_SESSION['user'] = $user;
-                $_SESSION['id_user'] = $user['idUser'];
-                $_SESSION['id_role'] = $user['idRole'];
+                $_SESSION['id_user'] = $user['iduser'];
+                $_SESSION['id_role'] = $user['idrole'];
                 $_SESSION['fullname'] = $user['nom'].' '.$user['prenom'];
                 if ($_SESSION['id_role'] == 2) {
                     header("Location: /ZILOM_MVC/public/enseignant/indexEns");
@@ -45,9 +65,6 @@ class AuthController
                 }elseif($_SESSION['id_role'] == 1) {
                     header("Location: /ZILOM_MVC/public/admin/index");
                     exit();
-                }else{
-                    header("Location: /ZILOM_MVC/public/login");
-                    exit();
                 }
             } else {
                 $error_message[] = $user;
@@ -55,12 +72,16 @@ class AuthController
                 header('Location: /ZILOM_MVC/public/login');
                 exit();
             }
+            unset($_SESSION['csrf_token']);
         }
-        require_once __DIR__ . '/../../App/Views/visiteur/login.php';
     }
     public function register(){
 
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitregister'])) {
+
+            if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+                $error_message[] = "Invalid CSRF token";
+            }
             $error_message = [];
             $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_STRING);
             $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_STRING);

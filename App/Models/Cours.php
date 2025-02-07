@@ -113,7 +113,6 @@ abstract class  Cours
                 LEFT JOIN categories ca ON c.categorie_id = ca.idCategory
                 WHERE c.idCours = :idCours
             ";
-
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':idCours', $idCours, \PDO::PARAM_INT);
             $stmt->execute();
@@ -257,11 +256,11 @@ abstract class  Cours
     {
         try {
             $pdo = DatabaseConnection::getInstance();
-            $sql = "SELECT COUNT(*) AS total_courses FROM cours";  // Alias COUNT(*) as total_courses
+            $sql = "SELECT COUNT(*) AS total_courses FROM cours";
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
             $result = $stmt->fetch(\PDO::FETCH_ASSOC);
-            return $result['total_courses'];  // Access the aliased result
+            return $result['total_courses'];
         } catch (\PDOException $e) {
             echo "Error fetching total courses: " . $e->getMessage();
             return 0;
@@ -281,7 +280,7 @@ abstract class  Cours
             (SELECT COUNT(*) FROM inscriptions i
              JOIN cours c ON i.cours_id = c.idCours
              WHERE c.enseignant_id = :teacherId 
-             AND DATE(i.date_inscription) = CURDATE()) AS nouveaux_etudiants
+             AND DATE(i.date_inscription) = CURRENT_DATE) AS nouveaux_etudiants
     ";
 
         $stmt = $pdo->prepare($query);

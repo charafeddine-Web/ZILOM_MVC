@@ -1,71 +1,4 @@
-<?php
-require_once '../autoload.php';
 
-use Classes\Categorie;
-use Classes\Cours_Video;
-use Classes\Cours_Text;
-use Classes\Enseignant;
-use Classes\Tag;
-session_start();
-
-
-if (!isset($_SESSION['id_user']) || (isset($_SESSION['id_role']) && $_SESSION['id_role'] !== 2)) {
-  header("Location: ../index.php");
-  exit;
-}
-
-if(isset($_SESSION['id_user'])){
-  $teacherId=$_SESSION['id_user'];
-  $teacherfullname=$_SESSION['fullname'];
-}
-
-$enseignant = new Enseignant($_SESSION['id_user'], null, null, null, null);
-if (!$enseignant->validateStatus()) {
-  echo '
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script>
-      document.addEventListener("DOMContentLoaded", function() {
-          Swal.fire({
-              title: "<span style=\'font-size: 24px; color: #4c6ef5;\'>Account Under Review</span>",
-              html: `
-                  <div style="display: flex; align-items: center; gap: 20px;">
-                      <i class="fas fa-clock" style="font-size: 40px; color: #4c6ef5;"></i>
-                      <p style="font-size: 18px; color: #333333;">Your account is under review. Please wait for approval before accessing this page.</p>
-                  </div>
-              `,
-              icon: "info",
-              background: "#f1f5f9",
-              confirmButtonText: "Go to Homepage",
-              confirmButtonColor: "#4c6ef5",
-              showCloseButton: true,
-              allowOutsideClick: false,
-              customClass: {
-                  popup: "swal-popup-large",
-                  confirmButton: "swal-confirm-btn",
-              },
-              padding: "20px",
-              width: "600px",
-              heightAuto: true,
-          }).then((result) => {
-              if (result.isConfirmed) {
-                  window.location.href = "../index.php"; 
-              }
-          });
-      });
-  </script>
-  ';
-  exit;
-}
-
-//pour show category 
-$category=new Categorie(null,null,null,null);
-$categories=$category->showCategories();
-
-$tag=new Tag(null,null);
-$tags=$tag->GetTags();
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,19 +36,19 @@ $tags=$tag->GetTags();
     <nav class="mt-6">
       <ul class="space-y-2">
         <li>
-          <a href="indexEns.php" class="flex items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+          <a href="/ZILOM_MVC/public/enseignant/indexEns" class="flex items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
             <i class="fas fa-tachometer-alt text-sm"></i>
             <span>Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="etudient.php" class="flex items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
+          <a href="/ZILOM_MVC/public/enseignant/etudient" class="flex items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
             <i class="fas fa-users text-sm"></i>
             <span>Étudiants</span>
           </a>
         </li>
         <li>
-          <a href="cours.php" class="flex items-center gap-4 py-2 px-4 rounded-lg bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-md">
+          <a href="/ZILOM_MVC/public/enseignant/cours" class="flex items-center gap-4 py-2 px-4 rounded-lg bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-md">
             <i class="fas fa-book text-sm"></i>
             <span>Cours</span>
           </a>
@@ -124,7 +57,7 @@ $tags=$tag->GetTags();
       </ul>
       <div class="mt-8">
         <p class="text-sm uppercase text-gray-400 mb-4">Auth Pages</p>
-        <form action="../logout.php" method="POST">
+        <form action="/ZILOM_MVC/public/logout" method="POST">
         <button type="submit" name="submit"  class="flex items-center gap-4 text-white py-2 px-4 rounded-lg hover:bg-gray-700">
           <i class="fas fa-sign-out-alt text-sm"></i>
           <span>Log Out</span>
@@ -174,7 +107,7 @@ $tags=$tag->GetTags();
       Add New Course
       
     </h2>
-    <form id="addCourseForm" method="POST" action="add_cours.php" enctype="multipart/form-data">
+    <form id="addCourseForm" method="POST" action="/ZILOM_MVC/public/enseignant/cours/Add" enctype="multipart/form-data">
     <input type="hidden" name="enseignant_id" id="enseignant_id" value="<?php echo intval($_SESSION['id_user']); ?>">
     <!-- Title -->
       <div class="mb-4">
@@ -225,17 +158,20 @@ $tags=$tag->GetTags();
         <label for="contenuText" class="block text-gray-700 font-bold">Content (Text):</label>
         <textarea id="contenuText" name="contenuText" class="w-full p-2 border rounded-lg" placeholder="Enter text content"></textarea>
       </div>
-      <div class="mb-4">
-        <label for="categorie_id" class="block text-gray-700 font-bold">Category</label>
-        <select name="categorie" id="categorie" class="p-2 rounded  bg-slate-100">
+        <select name="categorie" id="categorie" class="p-2 rounded bg-slate-100" required>
+            <option value="">Sélectionnez une catégorie</option>
             <?php
-            foreach ($categories as $category) {
-                echo "<option value='{$category['idCategory']}'>{$category['nom']}</option>";
+            if (!empty($categories)) {
+                foreach ($categories as $category) {
+                    echo "<option value='{$category['idcategory']}'>{$category['nom']}</option>";
+                }
+            } else {
+                echo "<option value=''>No categories available</option>";
             }
             ?>
         </select>
-      </div>
-      <div class="mb-4">
+
+        <div class="mb-4">
     <label for="tags" class="block text-gray-700 font-bold">Tags</label>
     <select name="tags[]" id="tags" class="p-2 rounded bg-slate-100" multiple>
         <?php
@@ -273,12 +209,10 @@ $tags=$tag->GetTags();
         <tbody>
           <?php 
             try {
-              $cours = new Cours_Video(null, null, null, $_SESSION['id_user'], null, null,null);
-              $result = $cours->getAllCours();
-              if ($result) {
-                foreach ($result as $ct) {
+              if ($resultvideo) {
+                foreach ($resultvideo as $ct) {
                   echo "<tr class='hover:bg-gray-100'>";
-                  echo '<td class="border px-4 py-2">' . htmlspecialchars($ct['idCours']) . '</td>';
+                  echo '<td class="border px-4 py-2">' . htmlspecialchars($ct['idcours']) . '</td>';
                   echo '<td class="border px-4 py-2">' . htmlspecialchars($ct['titre']) . '</td>';
                   echo '<td class="border px-4 py-2">' .  htmlspecialchars(substr($ct['description'], 0, 20)) ?><?= strlen($ct['description']) > 20 ? '...' : '' . '</td>';
                   echo '<td class="border px-4 py-2">' . htmlspecialchars($ct['nom']) . '</td>';
@@ -286,8 +220,8 @@ $tags=$tag->GetTags();
                   echo '<td class="border px-4 py-2">' . htmlspecialchars($ct['type']) . '</td>';
                   echo '<td class="border px-4 py-2 flex items-center justify-around">';
                   echo '<button class="text-blue-500 hover:text-blue-700" onclick="openEditModal(' . htmlspecialchars(json_encode($ct)) . ')">Edit</button>';
-                  echo '<a href="delete_cours.php?idCours=' . $ct['idCours'] . '" class="text-red-500 hover:text-red-700 flex items-center" onclick="return confirm(\'Are you sure you want to delete this course?\')"><i class="fas fa-trash-alt mr-1"></i> Delete</a>';
-                  echo '<a href="javascript:void(0);" class="text-green-500 hover:text-green-700 flex items-center" onclick="showCategoryDetails(' . $ct['idCours'] . ')"><i class="fas fa-eye mr-1"></i> View</a>';
+                  echo '<a href="/ZILOM_MVC/public/enseignant/cours/Delete?idCours=' . $ct['idcours'] . '" class="text-red-500 hover:text-red-700 flex items-center" onclick="return confirm(\'Are you sure you want to delete this course?\')"><i class="fas fa-trash-alt mr-1"></i> Delete</a>';
+                  echo '<a href="javascript:void(0);" class="text-green-500 hover:text-green-700 flex items-center" onclick="showCategoryDetails(' . $ct['idcours'] . ')"><i class="fas fa-eye mr-1"></i> View</a>';
                   echo '</td>';
                   echo "</tr>";
                 }
@@ -303,8 +237,6 @@ $tags=$tag->GetTags();
     </div>
   </div>
 </div>
-
-
 <div class="container mx-auto p-4">
   <h2 class="text-2xl font-semibold mb-4">Courses Text</h2>
   <div class="overflow-x-auto">
@@ -324,13 +256,10 @@ $tags=$tag->GetTags();
         <tbody>
           <?php 
             try {
-              $cours = new Cours_Text(null, null, null, null, $_SESSION['id_user'], null,null);
-              $result = $cours->getAllCours();
-
-              if ($result) {
-                foreach ($result as $ct) {
+              if ($resulttext) {
+                foreach ($resulttext as $ct) {
                   echo "<tr class='hover:bg-gray-100'>";
-                  echo '<td class="border px-4 py-2">' . htmlspecialchars($ct['idCours']) . '</td>';
+                  echo '<td class="border px-4 py-2">' . htmlspecialchars($ct['idcours']) . '</td>';
                   echo '<td class="border px-4 py-2">' . htmlspecialchars($ct['titre']) . '</td>';
                   echo '<td class="border px-4 py-2">' . htmlspecialchars(substr($ct['description'], 0, 20)) ?><?= strlen($ct['description']) > 20 ? '...' : '' . '</td>';
                   echo '<td class="border px-4 py-2">' . htmlspecialchars($ct['nom']) . '</td>';
@@ -338,8 +267,8 @@ $tags=$tag->GetTags();
                   echo '<td class="border px-4 py-2">' . htmlspecialchars($ct['type']) . '</td>';
                   echo '<td class="border px-4 py-2 flex items-center justify-around">';
                   echo '<button class="text-blue-500 hover:text-blue-700" onclick="openEditModal(' . htmlspecialchars(json_encode($ct)) . ')">Edit</button>';
-                  echo '<a href="delete_cours.php?idCours=' . $ct['idCours'] . '" class="text-red-500 hover:text-red-700 flex items-center" onclick="return confirm(\'Are you sure you want to delete this course?\')"><i class="fas fa-trash-alt mr-1"></i> Delete</a>';
-                  echo '<a href="javascript:void(0);" class="text-green-500 hover:text-green-700 flex items-center" onclick="showCategoryDetails(' . $ct['idCours'] . ')"><i class="fas fa-eye mr-1"></i> View</a>';
+                  echo '<a href="/ZILOM_MVC/public/enseignant/cours/Delete?idCours=' . $ct['idcours'] . '" class="text-red-500 hover:text-red-700 flex items-center" onclick="return confirm(\'Are you sure you want to delete this course?\')"><i class="fas fa-trash-alt mr-1"></i> Delete</a>';
+                  echo '<a href="javascript:void(0);" class="text-green-500 hover:text-green-700 flex items-center" onclick="showCategoryDetails(' . $ct['idcours'] . ')"><i class="fas fa-eye mr-1"></i> View</a>';
                   echo '</td>';
                   echo "</tr>";
                 }

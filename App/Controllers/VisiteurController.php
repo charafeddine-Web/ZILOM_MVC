@@ -36,10 +36,8 @@ class VisiteurController
         }
         $instructorName = htmlspecialchars($courseItem['enseignant_nom']);
         $categoryName = htmlspecialchars($courseItem['categorie_nom']);
-
         $cours=Cours::ShowCours();
         $courses = array_slice($cours, 0, 4);
-
         require_once __DIR__ . '/../../App/Views/visiteur/course-details.php';
     }
     public function courses(){
