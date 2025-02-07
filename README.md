@@ -110,11 +110,11 @@ Conception responsive adaptée à tous les types d’écrans.
 
 Clonez le repository :
 
-git clone https://github.com/charafeddine-Web/Plateforme_de_Cours_en_Ligne_Youdemy-/edit/main
+git clone https://github.com/charafeddine-Web/ZILOM_MVC.git
 
 Accédez au dossier :
 
-cd Plateforme_de_Cours_en_Ligne_Youdemy-
+cd ZILOM_MVC
 
 Configurez la base de données en utilisant le fichier SQL fourni dans le dossier database.
 
